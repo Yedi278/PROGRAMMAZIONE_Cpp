@@ -15,4 +15,4 @@ run:
 	./Main
 
 clean:
-	rm -rf *.o Main
+	del *.o Main
