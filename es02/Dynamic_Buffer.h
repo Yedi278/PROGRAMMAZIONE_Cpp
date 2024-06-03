@@ -26,7 +26,7 @@ namespace dnb{
      * @return true 
      * @return false 
      */
-    bool alloc(dynamic_buffer* d, int size=10);
+    void alloc(dynamic_buffer* d, int size=10);
 
     void dealloc(dynamic_buffer* d);
 

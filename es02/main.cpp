@@ -8,6 +8,7 @@ int main(int argc, char* argv[]){
 
     dnb::alloc(&d1, 10);
     dnb::init(&d1);
+    
     dnb::insert(&d1, 2, 25);
     dnb::insert(&d1, 3, 26);
     dnb::insert(&d1, 4, 27);

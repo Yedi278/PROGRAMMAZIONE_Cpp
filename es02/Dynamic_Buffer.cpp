@@ -1,9 +1,17 @@
 #include "Dynamic_Buffer.h"
 #include <iostream>
 #include <cassert>
-
 #define LOG(x) std::cerr<< x << std::endl
 
+namespace dnb{
+
+    void stampa(dynamic_buffer d);
+    void alloc(dynamic_buffer* d, int size);
+    void init(dynamic_buffer* d);
+    void dealloc(dynamic_buffer* d);
+    void insert(dynamic_buffer* d,unsigned int index, int data);
+    void copy(dynamic_buffer d1, dynamic_buffer* d2);
+}
 
 void dnb::stampa(dynamic_buffer d){
     
@@ -16,7 +24,7 @@ void dnb::stampa(dynamic_buffer d){
     std::cout << "Fine Buffer!" << std::endl;
 }
 
-bool dnb::alloc(dynamic_buffer* d, int size){
+void dnb::alloc(dynamic_buffer* d, int size){
 
     assert(d != NULL);
 
@@ -24,16 +32,13 @@ bool dnb::alloc(dynamic_buffer* d, int size){
 
     if(d->buffer != NULL){
         dnb::dealloc(d);
-        d->buffer = NULL;
     }
 
-    d->buffer = new int[d->size];
-    if(d->buffer != NULL){
-        return 1;
+    try{
+        d->buffer = new int[d->size];
     }
-    else{
-        std::cerr << "alloc() : errore nella riallocazione di memoria del buffer dinamico" << std::endl;
-        return 0;
+    catch(...){
+        throw;
     }
 }
 
@@ -69,12 +74,13 @@ void dnb::copy(dynamic_buffer d1, dynamic_buffer* d2){
     assert(d2 != NULL);
 
     dnb::dealloc(d2);
-    bool valid = dnb::alloc(d2, d1.size);
-    if(valid == false){
-        std::cerr << "Errore nella riallocazione della copia!" << std::endl;
-        return;
+    try{
+        dnb::alloc(d2, d1.size);
+    }catch(...){
+        throw;
     }
-    for(int i=0; i<d1.size; i++){
+
+    for(unsigned int i=0; i<d1.size; i++){
         d2->buffer[i] = d1.buffer[i];
     }
 
