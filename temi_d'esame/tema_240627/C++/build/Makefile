@@ -3,11 +3,11 @@ CXXFLAGS = -Wall -Wextra -pedantic -std=c++11
 
 SRC=../src/
 
-main: $(SRC)main.o
-	$(CXX) $(CXXFLAGS) $(SRC)main.o -o main
+main: main.o
+	$(CXX) $(CXXFLAGS) main.o -o main
 
-main.o: $(SRC)main.cpp	$(SRC)MultiSet.hpp
-	$(CXX) $(CXXFLAGS) -c $(SRC)main.cpp -o $(SRC)main.o
+main.o: $(SRC)main.cpp $(SRC)Multiset.hpp $(SRC)test_lib.h
+	$(CXX) $(CXXFLAGS) -c $(SRC)main.cpp -o main.o
 
 .PHONY: clean
 clean:
@@ -15,4 +15,14 @@ clean:
 
 .PHONY: run
 run:
+	@echo
+	@echo "Running main..."
+	@echo
 	./main
+
+.PHONY: leak
+leak:
+	@echo
+	@echo "Running valgrind..."
+	@echo
+	valgrind --leak-check=full ./main

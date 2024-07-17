@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cassert>
 
+// comment to remove verbose
 // #define N_VERBOSE
 
 #ifndef N_VERBOSE
@@ -11,8 +12,6 @@
 #else
 #define LOG(X)
 #endif
-
-
 
 
 template <typename T, typename C, typename E>
@@ -55,41 +54,75 @@ public:
         LOG("Multiset created");
     }
 
+    size_type size(void) const {
+        return _size;
+    }
+
     void add(const value_type& value){
+
+        // if the list is empty
         if(_head == nullptr){
+
             _head = new node(value);
-            ++_size;
+            if(_head == nullptr) {
+                throw std::bad_alloc(); 
+                _head=nullptr;
+            }
+
+            _size = 1;
             return;
         }
-
+        
+        node* prev = nullptr;
         node* current = _head;
 
         while(current != nullptr){
 
             if(_eq_comparator(current->_value, value)){
                 current->_count++;
+                ++_size;
                 return;
             }
-            if(_comparator(current->_value, value)){
-                node* new_node = new node(value);
-                new_node->_next = current;
-                _head = new_node;
-                ++_size;
-            }else{
-                if(current->_next == nullptr){
-                    current->_next = new node(value);
+
+            if(_comparator(current->_value, value)){ // value < current->_value
+
+                if(prev == nullptr){
+                    node* new_node = new node(value);
+                    if(new_node == nullptr) throw std::bad_alloc();
+                    new_node->_next = current;
+                    _head = new_node;
+                    ++_size;
+                    return;
+
+                }else{
+                    node* new_node = new node(value);
+                    if(new_node == nullptr) throw std::bad_alloc();
+                    new_node->_next = current;
+                    prev->_next = new_node;
                     ++_size;
                     return;
                 }
+
+            }else{  // value > current->_value
+            
+                if(current->_next == nullptr){
+                    current->_next = new node(value);
+                    if(current->_next == nullptr) throw std::bad_alloc();
+                    ++_size;
+                    return;
+                }
+                prev = current;
                 current = current->_next;
             }
 
         }
 
+        LOG("add called with value: " << value);
     }
 
-    void print(void){
+    void print(void) const{
         node* tmp = _head;
+        std::cout << "Multiset size: " << _size << std::endl;
         while(tmp != nullptr){
             std::cout << '<' << tmp->_value << ',' << tmp->_count << '>' << std::endl;
             tmp = tmp->_next;
@@ -97,5 +130,16 @@ public:
     }
 
 
+
+    ~Multiset(){
+        node* tmp = _head;
+        while(tmp != nullptr){
+            node* next = tmp->_next;
+            delete tmp;
+            tmp = next;
+        }
+        LOG("Multiset destroyed");
+    }
 };
+
 #endif
