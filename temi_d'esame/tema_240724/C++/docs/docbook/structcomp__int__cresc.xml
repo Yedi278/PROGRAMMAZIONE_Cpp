@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structcomp__int__cresc" xml:lang="en-US">
+<title>comp_int_cresc Struct Reference</title>
+<indexterm><primary>comp_int_cresc</primary></indexterm>
+<para>
+<computeroutput>#include &lt;test_lib.h&gt;</computeroutput>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>bool <link linkend="_structcomp__int__cresc_1a697e665979b2cd95c2af3f7a9fdb599e">operator()</link> (int a, int b)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_structcomp__int__cresc_1a697e665979b2cd95c2af3f7a9fdb599e"/><section>
+    <title>operator()()</title>
+<indexterm><primary>operator()</primary><secondary>comp_int_cresc</secondary></indexterm>
+<indexterm><primary>comp_int_cresc</primary><secondary>operator()</secondary></indexterm>
+<para><computeroutput>bool comp_int_cresc::operator() (int a, int b)<computeroutput>[inline]</computeroutput></computeroutput></para></section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+/home/minime/Documents/Programmazione_cpp/tema_240724/C++/<link linkend="_test__lib_8h">test_lib.h</link></section>
+</section>

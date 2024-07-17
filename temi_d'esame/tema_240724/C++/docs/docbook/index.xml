@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_index" xml:lang="en-US">
+    <info>
+    <title>Esame C++ 07-2024</title>
+    </info>
+<chapter>
+    <title>Class Documentation</title>
+    <xi:include href="classalbero.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structcomp__double__cresc.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structcomp__double__decr.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structcomp__int__cresc.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structcomp__int__decr.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="classalbero_1_1const__iterator.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="structalbero_1_1node.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<chapter>
+    <title>File Documentation</title>
+    <xi:include href="albero_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="albero_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="main_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="test__lib_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="test__lib_8h_source.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<chapter>
+    <title>Example Documentation</title>
+    <xi:include href="_2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<index/>
+</book>

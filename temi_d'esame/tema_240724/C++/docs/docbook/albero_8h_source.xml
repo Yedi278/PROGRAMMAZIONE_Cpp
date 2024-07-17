@@ -1,0 +1,333 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_albero_8h_source" xml:lang="en-US">
+<title>/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</title>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 
+12 <emphasis role="preprocessor">#ifndef&#32;ALB_LIB_H</emphasis>
+13 <emphasis role="preprocessor">#define&#32;ALB_LIB_H</emphasis>
+14 
+15 <emphasis role="preprocessor">#ifndef&#32;NDEBUG</emphasis>
+16 <emphasis role="preprocessor">#define&#32;LOG(X)&#32;std::cout&#32;&lt;&lt;&#32;X&#32;&lt;&lt;&#32;std::endl</emphasis>
+17 <emphasis role="preprocessor">#elif</emphasis>
+18 <emphasis role="preprocessor">#define&#32;LOG(X)</emphasis>
+19 <emphasis role="preprocessor">#endif</emphasis>
+20 
+21 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+22 <emphasis role="preprocessor">#include&#32;&lt;cassert&gt;</emphasis>
+23 <emphasis role="preprocessor">#include&#32;&lt;iterator&gt;</emphasis>
+24 <emphasis role="preprocessor">#include&#32;&lt;cstddef&gt;</emphasis>
+25 
+31 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">typename</emphasis>&#32;T,&#32;<emphasis role="keyword">typename</emphasis>&#32;Comparator&gt;
+32 <emphasis role="keyword">class&#32;</emphasis><link linkend="_classalbero">albero</link>
+33 {
+34 <emphasis role="keyword">public</emphasis>:
+36 &#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;T&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link>;
+37 &#32;&#32;&#32;&#32;
+39 &#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">long</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_classalbero_1aaf3730f56de85e62db22219ddfb46d0d">size_type</link>;
+40 
+41 <emphasis role="keyword">private</emphasis>:
+43 &#32;&#32;&#32;&#32;<link linkend="_classalbero_1aaf3730f56de85e62db22219ddfb46d0d">size_type</link>&#32;<link linkend="_classalbero_1a06876018985c57db843e3e31ecb3bbb3">_size</link>;
+44 
+46 &#32;&#32;&#32;&#32;Comparator&#32;<link linkend="_classalbero_1a95480de52cbe7df23e12ef05f4503283">_comp_func</link>;
+47 
+53 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis><link linkend="_structalbero_1_1node">node</link>{
+54 
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link>&#32;<link linkend="_structalbero_1_1node_1a4838fe7f447d57c8364d98f1b5049f4c">_value</link>;
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node">node</link>*&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>;
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node">node</link>*&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>;
+58 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+63 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node_1a7123b0be0cd5fc1bc3820371dc14b3f4">node</link>()&#32;=&#32;<emphasis role="keyword">delete</emphasis>;
+64 
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">explicit</emphasis>&#32;<link linkend="_structalbero_1_1node_1aa2e99a86ecb6656668220aed458a43fe">node</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link>&amp;&#32;value)&#32;:&#32;<link linkend="_structalbero_1_1node_1a4838fe7f447d57c8364d98f1b5049f4c">_value</link>(value){
+71 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>;
+72 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>;
+73 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifndef&#32;NDEBUG</emphasis>
+74 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;node(const&#32;value_type&amp;&#32;value)&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+75 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+76 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node_1ad181ef3487813812756b6ead3fef337e">~node</link>(){
+85 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+86 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>){
+87 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>;
+88 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>;
+89 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+90 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>){
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>;
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>;
+93 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+94 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>;
+95 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>;
+96 
+97 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifndef&#32;NDEBUG</emphasis>
+98 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;~node()&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+99 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+101 &#32;&#32;&#32;&#32;};
+102 
+104 &#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node">node</link>*&#32;<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>;
+105 
+106 <emphasis role="keyword">public</emphasis>:&#32;&#32;&#32;
+112 &#32;&#32;&#32;&#32;<link linkend="_classalbero_1ab2803c78407e4f223535d11aeb1a0772">albero</link>()&#32;=&#32;<emphasis role="keyword">delete</emphasis>;
+113 
+119 &#32;&#32;&#32;&#32;<emphasis role="keyword">explicit</emphasis>&#32;<link linkend="_classalbero_1ae4555f78eefdbf58e44455495c52946f">albero</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link>&amp;&#32;value)&#32;:&#32;<link linkend="_classalbero_1a06876018985c57db843e3e31ecb3bbb3">_size</link>(0),&#32;<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>(nullptr)&#32;{
+120 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifndef&#32;NDEBUG</emphasis>
+121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;albero(const&#32;value_type&amp;&#32;value)&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+122 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+123 
+124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>{
+125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_structalbero_1_1node">node</link>(value);
+126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;++<link linkend="_classalbero_1a06876018985c57db843e3e31ecb3bbb3">_size</link>;
+127 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}<emphasis role="keywordflow">catch</emphasis>(...){
+128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>;
+129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1a06876018985c57db843e3e31ecb3bbb3">_size</link>&#32;=&#32;0;
+130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>;
+131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+132 &#32;&#32;&#32;&#32;}
+133 
+143 &#32;&#32;&#32;&#32;<emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">typename</emphasis>&#32;Iter&gt;
+144 &#32;&#32;&#32;&#32;<link linkend="_classalbero_1ac5d5d288f18361134dd709b51eac2784">albero</link>(<emphasis role="keyword">const</emphasis>&#32;Iter&#32;<link linkend="_classalbero_1a9b6921216d92415493a6478c56599db8">begin</link>,&#32;<emphasis role="keyword">const</emphasis>&#32;Iter&#32;<link linkend="_classalbero_1a50b5304d1b1c9092efaa85dfd44b8fdd">end</link>)&#32;:&#32;<link linkend="_classalbero_1a06876018985c57db843e3e31ecb3bbb3">_size</link>(0),&#32;<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>(nullptr)&#32;{
+145 
+146 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Iter&#32;tmp&#32;=&#32;<link linkend="_classalbero_1a9b6921216d92415493a6478c56599db8">begin</link>;
+147 
+148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(tmp&#32;!=&#32;<link linkend="_classalbero_1a50b5304d1b1c9092efaa85dfd44b8fdd">end</link>){
+149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1a2c2871198f2a64be1b49c115f26ce93c">add</link>(<emphasis role="keyword">static_cast&lt;</emphasis><link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link><emphasis role="keyword">&gt;</emphasis>(*tmp));
+150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;tmp++;
+151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+152 &#32;&#32;&#32;&#32;}
+153 
+159 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classalbero_1a2c2871198f2a64be1b49c115f26ce93c">add</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link>&amp;&#32;val)&#32;{
+160 
+161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node">node</link>*&#32;tmp&#32;=&#32;<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>;
+162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node">node</link>*&#32;new_node&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_structalbero_1_1node">node</link>(<emphasis role="keyword">static_cast&lt;</emphasis><link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link><emphasis role="keyword">&gt;</emphasis>(val));
+163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//if&#32;allocation&#32;did&#32;not&#32;succeed&#32;an&#32;exception&#32;is&#32;thrown&#32;as&#32;bad_alloc</emphasis>
+165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(new_node&#32;==&#32;<emphasis role="keyword">nullptr</emphasis>){
+166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;new_node;
+167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>&#32;std::bad_alloc();
+168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+170 
+171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//if&#32;this&#32;is&#32;the&#32;first&#32;element:</emphasis>
+172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(tmp&#32;==&#32;<emphasis role="keyword">nullptr</emphasis>){
+173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>&#32;=&#32;new_node;
+174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1a06876018985c57db843e3e31ecb3bbb3">_size</link>&#32;=&#32;1;
+175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+177 
+178 
+179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(<emphasis role="keyword">true</emphasis>){
+180 
+181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(&#32;<link linkend="_classalbero_1a95480de52cbe7df23e12ef05f4503283">_comp_func</link>(val,&#32;tmp-&gt;<link linkend="_structalbero_1_1node_1a4838fe7f447d57c8364d98f1b5049f4c">_value</link>)&#32;){
+182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(tmp-&gt;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>){
+183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;tmp&#32;=&#32;tmp-&gt;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>;
+184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">continue</emphasis>;
+185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>{
+186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;tmp-&gt;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>&#32;=&#32;new_node;
+187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;++<link linkend="_classalbero_1a06876018985c57db843e3e31ecb3bbb3">_size</link>;
+188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>{
+191 
+192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(tmp-&gt;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>){
+193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;tmp&#32;=&#32;tmp-&gt;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>;
+194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">continue</emphasis>;
+195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}<emphasis role="keywordflow">else</emphasis>{
+196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;tmp-&gt;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>&#32;=&#32;new_node;
+197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;++<link linkend="_classalbero_1a06876018985c57db843e3e31ecb3bbb3">_size</link>;
+198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+202 &#32;&#32;&#32;&#32;};
+203 
+204 <emphasis role="keyword">private</emphasis>:
+205 
+214 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classalbero_1a854224711275fa21273fc05d43f6c48b">print</link>(std::ostream&amp;&#32;os,<emphasis role="keyword">const</emphasis>&#32;<link linkend="_structalbero_1_1node">node</link>*&#32;n)<emphasis role="keyword">&#32;const</emphasis>{
+215 
+216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//exit&#32;condition&#32;for&#32;recursion</emphasis>
+217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n-&gt;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;<link linkend="_classalbero_1a743b9c855317721470f6f293771cf4df">print</link>(os,&#32;n-&gt;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>);
+218 
+219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//_value&#32;is&#32;supposed&#32;to&#32;be&#32;allways&#32;accessible</emphasis>
+220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//if&#32;the&#32;first&#32;is&#32;not&#32;null&#32;</emphasis>
+221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;os&#32;&lt;&lt;&#32;n-&gt;<link linkend="_structalbero_1_1node_1a4838fe7f447d57c8364d98f1b5049f4c">_value</link>;
+222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;os&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
+223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n-&gt;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;<link linkend="_classalbero_1a743b9c855317721470f6f293771cf4df">print</link>(os,&#32;n-&gt;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>);
+225 &#32;&#32;&#32;&#32;}
+226 &#32;&#32;&#32;&#32;
+236 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classalbero_1a5e99efa2c22bff083ed2d9081347e3f4">find</link>(<link linkend="_structalbero_1_1node">node</link>*&#32;n,<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link>&amp;&#32;value)<emphasis role="keyword">&#32;const</emphasis>{
+237 
+238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//exit&#32;conditions&#32;for&#32;recursion</emphasis>
+239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n&#32;==&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n-&gt;<link linkend="_structalbero_1_1node_1a4838fe7f447d57c8364d98f1b5049f4c">_value</link>&#32;==&#32;value)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;left&#32;=&#32;<emphasis role="keyword">false</emphasis>,&#32;right&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+243 
+244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n-&gt;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;left&#32;=&#32;<link linkend="_classalbero_1a5e99efa2c22bff083ed2d9081347e3f4">find</link>(n-&gt;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>,&#32;value);
+245 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n-&gt;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;right&#32;=&#32;<link linkend="_classalbero_1a5e99efa2c22bff083ed2d9081347e3f4">find</link>(n-&gt;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>,&#32;value);
+246 
+247 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(left&#32;==&#32;<emphasis role="keyword">true</emphasis>&#32;||&#32;right&#32;==&#32;<emphasis role="keyword">true</emphasis>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+248 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+249 &#32;&#32;&#32;&#32;}
+250 
+261 &#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node">node</link>*&#32;<link linkend="_classalbero_1a3f9b061f8ce944df2682fc8958f1e367">find_p</link>(<link linkend="_structalbero_1_1node">node</link>*&#32;n,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link>&amp;&#32;value)<emphasis role="keyword">&#32;const</emphasis>{
+262 
+263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n-&gt;<link linkend="_structalbero_1_1node_1a4838fe7f447d57c8364d98f1b5049f4c">_value</link>&#32;==&#32;value)&#32;<emphasis role="keywordflow">return</emphasis>&#32;n;
+264 
+265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node">node</link>*&#32;left&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>;
+266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node">node</link>*&#32;right&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>;
+267 
+268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n-&gt;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;&#32;left&#32;=&#32;<link linkend="_classalbero_1a3f9b061f8ce944df2682fc8958f1e367">find_p</link>(n-&gt;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>,&#32;value);
+269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(left&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;left;
+270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n-&gt;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;right&#32;=&#32;<link linkend="_classalbero_1a3f9b061f8ce944df2682fc8958f1e367">find_p</link>(n-&gt;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>,&#32;value);
+271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(right&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;right;
+272 
+273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">nullptr</emphasis>;
+274 &#32;&#32;&#32;&#32;}
+275 
+284 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classalbero_1af0df859b68790dbda0667c36ccfa63ea">add_to</link>(<link linkend="_classalbero">albero</link>*&#32;a,&#32;<link linkend="_structalbero_1_1node">node</link>*&#32;start){
+285 
+286 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;a-&gt;<link linkend="_classalbero_1a2c2871198f2a64be1b49c115f26ce93c">add</link>(start-&gt;<link linkend="_structalbero_1_1node_1a4838fe7f447d57c8364d98f1b5049f4c">_value</link>);
+287 
+288 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(start-&gt;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;<link linkend="_classalbero_1af0df859b68790dbda0667c36ccfa63ea">add_to</link>(a,&#32;start-&gt;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>);
+289 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(start-&gt;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;<link linkend="_classalbero_1af0df859b68790dbda0667c36ccfa63ea">add_to</link>(a,&#32;start-&gt;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>);
+290 &#32;&#32;&#32;&#32;}
+291 
+292 <emphasis role="keyword">public</emphasis>:
+299 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_classalbero_1a743b9c855317721470f6f293771cf4df">print</link>(<emphasis role="keywordtype">void</emphasis>)<emphasis role="keyword">&#32;const</emphasis>{
+300 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Binary&#32;three&#32;of&#32;size:&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;<link linkend="_classalbero_1a06876018985c57db843e3e31ecb3bbb3">_size</link>&#32;&lt;&lt;&#32;std::endl;
+301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;[&#32;&quot;</emphasis>;
+302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1a743b9c855317721470f6f293771cf4df">print</link>(std::cout,&#32;<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>);
+303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;]&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+304 &#32;&#32;&#32;&#32;}
+305 
+311 &#32;&#32;&#32;&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classalbero_1aaf3730f56de85e62db22219ddfb46d0d">size_type</link>&#32;<link linkend="_classalbero_1ad46b855b7622539682cf30c81573c54b">size</link>(<emphasis role="keywordtype">void</emphasis>)<emphasis role="keyword">const&#32;</emphasis>{
+312 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_classalbero_1a06876018985c57db843e3e31ecb3bbb3">_size</link>;
+313 &#32;&#32;&#32;&#32;}
+314 
+322 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classalbero_1a3283e49f5948447b23c9306606b82575">find</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link>&amp;&#32;value)<emphasis role="keyword">&#32;const</emphasis>{
+323 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_classalbero_1a5e99efa2c22bff083ed2d9081347e3f4">find</link>(<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>,&#32;value);
+324 &#32;&#32;&#32;&#32;}
+325 
+335 &#32;&#32;&#32;&#32;<link linkend="_classalbero">albero</link>*&#32;<link linkend="_classalbero_1a9b9dbcd183b8b32cc04417b16c582862">subthree</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link>&amp;&#32;value){
+336 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert(<link linkend="_classalbero_1a5e99efa2c22bff083ed2d9081347e3f4">find</link>(value)&#32;==&#32;<emphasis role="keyword">true</emphasis>);
+337 
+338 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node">node</link>*&#32;n_value&#32;=&#32;<link linkend="_classalbero_1a3f9b061f8ce944df2682fc8958f1e367">find_p</link>(<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>,&#32;value);
+339 
+340 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero">albero</link>*&#32;new_albero&#32;=&#32;&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_classalbero_1ab2803c78407e4f223535d11aeb1a0772">albero</link>(value);
+341 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+342 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n_value-&gt;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;&#32;&#32;<link linkend="_classalbero_1af0df859b68790dbda0667c36ccfa63ea">add_to</link>(new_albero,&#32;n_value-&gt;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>);
+343 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(n_value-&gt;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;&#32;<link linkend="_classalbero_1af0df859b68790dbda0667c36ccfa63ea">add_to</link>(new_albero,&#32;n_value-&gt;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>);
+344 
+345 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;new_albero;
+346 &#32;&#32;&#32;&#32;}
+347 
+357 &#32;&#32;&#32;&#32;<emphasis role="keyword">friend</emphasis>&#32;std::ostream&amp;&#32;<link linkend="_classalbero_1a6eaa6fa905b1e754e40f6e2829452fc0">operator&lt;&lt;</link>(std::ostream&amp;&#32;os,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classalbero">albero</link>&amp;&#32;alb){
+358 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;os&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;[&#32;&quot;</emphasis>;
+359 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(alb.<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>)&#32;alb.<link linkend="_classalbero_1a854224711275fa21273fc05d43f6c48b">print</link>(os,&#32;alb.<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>);
+360 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;os&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;]&quot;</emphasis>;
+361 &#32;&#32;&#32;&#32;}
+362 
+370 &#32;&#32;&#32;&#32;<link linkend="_classalbero_1a9bb2ccc4c6fe926b0124c1c3fe22516f">~albero</link>()&#32;{
+371 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifndef&#32;DEBUG</emphasis>
+372 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cerr&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;~albero()&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+373 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+374 
+375 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>&#32;!=&#32;<emphasis role="keyword">nullptr</emphasis>){
+376 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>;
+377 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>&#32;=&#32;<emphasis role="keyword">nullptr</emphasis>;
+378 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+379 &#32;&#32;&#32;&#32;};
+380 
+385 &#32;&#32;&#32;&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_classalbero_1_1const__iterator">const_iterator</link>&#32;{
+386 
+387 &#32;&#32;&#32;&#32;<emphasis role="keyword">public</emphasis>:
+388 
+389 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;std::forward_iterator_tag&#32;<link linkend="_classalbero_1_1const__iterator_1a1c8a92a22c10d88bf18b798a247579f1">iterator_category</link>;
+390 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;ptrdiff_t&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1_1const__iterator_1af751fa567b4c5f205789046bd5ce6bd2">difference_type</link>;
+391 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;T*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1_1const__iterator_1a5b44d31a909319be3bb4638831c22143">pointer</link>;
+392 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">typedef</emphasis>&#32;<emphasis role="keyword">const</emphasis>&#32;T&amp;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1_1const__iterator_1ae363ca6861b7424a5a9200f4e8d1406b">reference</link>;
+393 
+400 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1_1const__iterator_1affbde34121570516f295d43ce4b5fbda">const_iterator</link>()&#32;:&#32;<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>(nullptr){}
+401 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+402 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1_1const__iterator_1a8cafa0e559d65444f1986cf088135ef3">const_iterator</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classalbero_1_1const__iterator">const_iterator</link>&#32;&amp;other)&#32;:&#32;<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>(other.<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>){}
+403 
+404 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1_1const__iterator">const_iterator</link>&amp;&#32;<link linkend="_classalbero_1_1const__iterator_1ab7f43c8e44e5afc42518b39cf2128cbb">operator=</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classalbero_1_1const__iterator">const_iterator</link>&#32;&amp;other)&#32;{
+405 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>&#32;=&#32;other.<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>;
+406 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
+407 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+408 
+409 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1_1const__iterator_1a04873946aecfaaa57c206ee9a92e10db">~const_iterator</link>()&#32;{
+410 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_albero_8h_1adadcbb9e426e1bf6bd7ac06dac7f958b">LOG</link>(<emphasis role="stringliteral">&quot;~const_iterator()&quot;</emphasis>);
+411 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+412 
+413 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link>&#32;<link linkend="_classalbero_1_1const__iterator_1acf95f24ee2dcc80a8bb9676de5c0dfa6">operator*</link>()<emphasis role="keyword">&#32;const&#32;</emphasis>{
+414 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>-&gt;<link linkend="_structalbero_1_1node_1a4838fe7f447d57c8364d98f1b5049f4c">_value</link>;
+415 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+416 
+417 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link>*&#32;<link linkend="_classalbero_1_1const__iterator_1af6333b3d0d2033e21e871bc8f8b00932">operator-&gt;</link>()<emphasis role="keyword">&#32;const&#32;</emphasis>{
+418 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;(<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>-&gt;<link linkend="_structalbero_1_1node_1a4838fe7f447d57c8364d98f1b5049f4c">_value</link>);
+419 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+420 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+421 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1_1const__iterator">const_iterator</link>&amp;&#32;<link linkend="_classalbero_1_1const__iterator_1af43d62370b5a9c97e5a799c7f63f686e">operator++</link>(<emphasis role="keywordtype">int</emphasis>)&#32;{
+422 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>&#32;=&#32;<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>-&gt;<link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link>;
+423 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
+424 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+425 
+426 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1_1const__iterator">const_iterator</link>&amp;&#32;<link linkend="_classalbero_1_1const__iterator_1af8c76ea3ae936f655433d633bfa23059">operator++</link>()&#32;{
+427 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>&#32;=&#32;<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>-&gt;<link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link>;
+428 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;*<emphasis role="keyword">this</emphasis>;
+429 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+430 
+431 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classalbero_1_1const__iterator_1a46e8abb6678200d218ba3f2de2b654c5">operator==</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classalbero_1_1const__iterator">const_iterator</link>&#32;&amp;other)<emphasis role="keyword">&#32;const&#32;</emphasis>{
+432 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>&#32;==&#32;other.<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>);
+433 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+434 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+435 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_classalbero_1_1const__iterator_1a6c6f45aa23158c2492734374fc8f5040">operator!=</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_classalbero_1_1const__iterator">const_iterator</link>&#32;&amp;other)<emphasis role="keyword">&#32;const&#32;</emphasis>{
+436 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;!(<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>&#32;==&#32;other.<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>);
+437 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+438 
+439 &#32;&#32;&#32;&#32;<emphasis role="keyword">private</emphasis>:
+440 
+441 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">friend</emphasis>&#32;<emphasis role="keyword">class&#32;</emphasis><link linkend="_classalbero">albero</link>;
+442 
+444 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_structalbero_1_1node">node</link>*&#32;<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>;
+445 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+446 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero_1_1const__iterator_1a5c32f2a22c6f4880602d392711b88319">const_iterator</link>(<link linkend="_structalbero_1_1node">node</link>*&#32;p)&#32;:&#32;<link linkend="_classalbero_1_1const__iterator_1a4e12d23778060df0e4f3efa4b848cf66">ptr</link>(p)&#32;{&#32;}
+447 
+448 &#32;&#32;&#32;&#32;};
+449 
+455 &#32;&#32;&#32;&#32;<link linkend="_classalbero_1_1const__iterator">const_iterator</link>&#32;<link linkend="_classalbero_1a9b6921216d92415493a6478c56599db8">begin</link>()<emphasis role="keyword">&#32;const&#32;</emphasis>{
+456 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_classalbero_1_1const__iterator">const_iterator</link>(<link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link>);
+457 &#32;&#32;&#32;&#32;}
+458 
+466 &#32;&#32;&#32;&#32;<link linkend="_classalbero_1_1const__iterator">const_iterator</link>&#32;<link linkend="_classalbero_1a50b5304d1b1c9092efaa85dfd44b8fdd">end</link>()<emphasis role="keyword">&#32;const&#32;</emphasis>{
+467 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_classalbero_1_1const__iterator">const_iterator</link>(<emphasis role="keyword">nullptr</emphasis>);
+468 &#32;&#32;&#32;&#32;}
+469 };
+470 
+471 
+482 <emphasis role="keyword">template</emphasis>&#32;&lt;<emphasis role="keyword">typename</emphasis>&#32;T,&#32;<emphasis role="keyword">typename</emphasis>&#32;Comp,&#32;<emphasis role="keyword">typename</emphasis>&#32;P&gt;
+483 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_albero_8h_1af99b53b1e905459a5a34548f1a9a61b3">printIF</link>(<link linkend="_classalbero">albero&lt;T,Comp&gt;</link>&amp;&#32;a){
+484 &#32;&#32;&#32;&#32;P&#32;pred;
+485 &#32;&#32;&#32;&#32;<emphasis role="keyword">typename</emphasis>&#32;<link linkend="_classalbero_1_1const__iterator">albero&lt;T,Comp&gt;::const_iterator</link>&#32;b(a.<link linkend="_classalbero_1a9b6921216d92415493a6478c56599db8">begin</link>()),e(a.<link linkend="_classalbero_1a50b5304d1b1c9092efaa85dfd44b8fdd">end</link>()),&#32;tmp1(a.<link linkend="_classalbero_1a9b6921216d92415493a6478c56599db8">begin</link>()),&#32;tmp2(a.<link linkend="_classalbero_1a9b6921216d92415493a6478c56599db8">begin</link>());
+486 
+487 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(pred(<emphasis role="keyword">static_cast&lt;</emphasis>T<emphasis role="keyword">&gt;</emphasis>(*b))){
+488 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;*b&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>;
+489 &#32;&#32;&#32;&#32;}
+490 
+491 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(tmp1++&#32;!=&#32;e){
+492 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero">albero&lt;T,Comp&gt;</link>*&#32;tmp&#32;=&#32;a.<link linkend="_classalbero_1a9b9dbcd183b8b32cc04417b16c582862">subthree</link>(*tmp1);
+493 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printIF&lt;T,Comp,P&gt;(*tmp);
+494 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;tmp;
+495 &#32;&#32;&#32;&#32;}
+496 
+497 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(++tmp2&#32;!=&#32;e){
+498 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero">albero&lt;T,Comp&gt;</link>*&#32;tmp&#32;=&#32;a.<link linkend="_classalbero_1a9b9dbcd183b8b32cc04417b16c582862">subthree</link>(*tmp2);
+499 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;printIF&lt;T,Comp,P&gt;(*tmp);
+500 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;tmp;
+501 &#32;&#32;&#32;&#32;}
+502 }
+503 
+504 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>

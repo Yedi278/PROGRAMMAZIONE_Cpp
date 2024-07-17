@@ -1,0 +1,796 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_classalbero" xml:lang="en-US">
+<title>albero&lt; T, Comparator &gt; Class Template Reference</title>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary></indexterm>
+<para>
+
+<para>Class for rappresenting a binary three. </para>
+ 
+</para>
+<para>
+<computeroutput>#include &lt;albero.h&gt;</computeroutput>
+</para>
+Collaboration diagram for albero&lt; T, Comparator &gt;:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classalbero__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_classalbero_1_1const__iterator">const_iterator</link></para>
+
+<para>Read only iterator for the albero object. </para>
+</listitem>
+            <listitem><para>struct <link linkend="_structalbero_1_1node">node</link></para>
+
+<para>struct for single node in the three </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Types    </title>
+        <itemizedlist>
+            <listitem><para>typedef T <link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link></para>
+
+<para>type for values contained </para>
+</listitem>
+            <listitem><para>typedef unsigned long int <link linkend="_classalbero_1aaf3730f56de85e62db22219ddfb46d0d">size_type</link></para>
+
+<para>type for three size </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classalbero_1ab2803c78407e4f223535d11aeb1a0772">albero</link> ()=delete</para>
+
+<para><computeroutput>default constructor not permitted</computeroutput> </para>
+</listitem>
+            <listitem><para><link linkend="_classalbero_1ae4555f78eefdbf58e44455495c52946f">albero</link> (const <link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> &amp;value)</para>
+
+<para>constructor given one data element </para>
+</listitem>
+            <listitem><para>template&lt;typename Iter &gt; </para><para><link linkend="_classalbero_1ac5d5d288f18361134dd709b51eac2784">albero</link> (const Iter <link linkend="_classalbero_1a9b6921216d92415493a6478c56599db8">begin</link>, const Iter <link linkend="_classalbero_1a50b5304d1b1c9092efaa85dfd44b8fdd">end</link>)</para>
+
+<para>Construct a new albero object by giving two sets of iterators. </para>
+</listitem>
+            <listitem><para>void <link linkend="_classalbero_1a2c2871198f2a64be1b49c115f26ce93c">add</link> (const <link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> &amp;val)</para>
+
+<para>this function adds one data element to the structure </para>
+</listitem>
+            <listitem><para>void <link linkend="_classalbero_1a743b9c855317721470f6f293771cf4df">print</link> (void) const</para>
+
+<para>print function for serializing the data in the structure </para>
+</listitem>
+            <listitem><para>const <link linkend="_classalbero_1aaf3730f56de85e62db22219ddfb46d0d">size_type</link> <link linkend="_classalbero_1ad46b855b7622539682cf30c81573c54b">size</link> (void) const</para>
+
+<para>this function gives the number of data elements contained in the structure </para>
+</listitem>
+            <listitem><para>bool <link linkend="_classalbero_1a3283e49f5948447b23c9306606b82575">find</link> (const <link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> &amp;value) const</para>
+
+<para>this function find the existance of one data element in the structure </para>
+</listitem>
+            <listitem><para><link linkend="_classalbero">albero</link> * <link linkend="_classalbero_1a9b9dbcd183b8b32cc04417b16c582862">subthree</link> (const <link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> &amp;value)</para>
+
+<para>this function creates a new albero instance from one data element </para>
+</listitem>
+            <listitem><para><link linkend="_classalbero_1a9bb2ccc4c6fe926b0124c1c3fe22516f">~albero</link> ()</para>
+
+<para>Destroy the albero object. </para>
+</listitem>
+            <listitem><para><link linkend="_classalbero_1_1const__iterator">const_iterator</link> <link linkend="_classalbero_1a9b6921216d92415493a6478c56599db8">begin</link> () const</para>
+
+<para>this function returns the iterator for the first element of the binary three </para>
+</listitem>
+            <listitem><para><link linkend="_classalbero_1_1const__iterator">const_iterator</link> <link linkend="_classalbero_1a50b5304d1b1c9092efaa85dfd44b8fdd">end</link> () const</para>
+
+<para>this function returns an end iterator for the binary three </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Member Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_classalbero_1a854224711275fa21273fc05d43f6c48b">print</link> (std::ostream &amp;os, const <link linkend="_structalbero_1_1node">node</link> *n) const</para>
+
+<para>recursive function for printing all the data elements in order </para>
+</listitem>
+            <listitem><para>bool <link linkend="_classalbero_1a5e99efa2c22bff083ed2d9081347e3f4">find</link> (<link linkend="_structalbero_1_1node">node</link> *n, const <link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> &amp;value) const</para>
+
+<para>recursive function for finding one data element&apos;s existance in the structure </para>
+</listitem>
+            <listitem><para><link linkend="_structalbero_1_1node">node</link> * <link linkend="_classalbero_1a3f9b061f8ce944df2682fc8958f1e367">find_p</link> (<link linkend="_structalbero_1_1node">node</link> *n, const <link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> &amp;value) const</para>
+
+<para>recursive function for finding one data element&apos;s node pointer in the structure </para>
+</listitem>
+            <listitem><para>void <link linkend="_classalbero_1af0df859b68790dbda0667c36ccfa63ea">add_to</link> (<link linkend="_classalbero">albero</link> *a, <link linkend="_structalbero_1_1node">node</link> *start)</para>
+
+<para>this function adds one element to external albero object </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Private Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classalbero_1aaf3730f56de85e62db22219ddfb46d0d">size_type</link> <link linkend="_classalbero_1a06876018985c57db843e3e31ecb3bbb3">_size</link></para>
+
+<para>number of elements contained in the three </para>
+</listitem>
+            <listitem><para>Comparator <link linkend="_classalbero_1a95480de52cbe7df23e12ef05f4503283">_comp_func</link></para>
+
+<para>functor object for comparing values </para>
+</listitem>
+            <listitem><para><link linkend="_structalbero_1_1node">node</link> * <link linkend="_classalbero_1aa8088c050e8b622731196807e4fd8fd8">_root</link></para>
+
+<para>first node of the three </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Friends    </title>
+        <itemizedlist>
+            <listitem><para>std::ostream &amp; <link linkend="_classalbero_1a6eaa6fa905b1e754e40f6e2829452fc0">operator&lt;&lt;</link> (std::ostream &amp;os, const <link linkend="_classalbero">albero</link> &amp;alb)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<simplesect><title>template&lt;typename T, typename Comparator&gt;
+class albero&lt; T, Comparator &gt;</title></simplesect>
+
+<para>Class for rappresenting a binary three. </para>
+
+
+
+<para>
+                <formalpara>
+                    <title>
+Template Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>T</entry><entry>
+<para>type of data to be stored </para>
+</entry>
+                            </row>
+                            <row>
+<entry>Comparator</entry><entry>
+<para>for &lt;,&gt;,= operations between two data members </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+<section>
+<title>Member Typedef Documentation</title>
+<anchor xml:id="_classalbero_1aaf3730f56de85e62db22219ddfb46d0d"/><section>
+    <title>size_type</title>
+<indexterm><primary>size_type</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>size_type</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput>typedef unsigned long int <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::size_type</computeroutput></para><para>
+
+<para>type for three size </para>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+<anchor xml:id="_classalbero_1a472cbd49994891952384d4cc1a8e7c19"/><section>
+    <title>value_type</title>
+<indexterm><primary>value_type</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>value_type</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput>typedef T <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::value_type</computeroutput></para><para>
+
+<para>type for values contained </para>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_classalbero_1ab2803c78407e4f223535d11aeb1a0772"/><section>
+    <title>albero()<computeroutput>[1/3]</computeroutput></title>
+<indexterm><primary>albero</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>albero</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput><link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;<link linkend="_classalbero">::albero</link> ( )<computeroutput>[delete]</computeroutput></computeroutput></para><para>
+
+<para><computeroutput>default constructor not permitted</computeroutput> </para>
+</para>
+
+<para><note><title>Note</title>
+
+<para>To create a new object at least one data element must be given </para>
+
+<para>to see permitted constructors see the documentation </para>
+</note>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+<anchor xml:id="_classalbero_1ae4555f78eefdbf58e44455495c52946f"/><section>
+    <title>albero()<computeroutput>[2/3]</computeroutput></title>
+<indexterm><primary>albero</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>albero</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput><link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;<link linkend="_classalbero">::albero</link> (const <link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> &amp; value)<computeroutput>[inline]</computeroutput>, <computeroutput>[explicit]</computeroutput></computeroutput></para><para>
+
+<para>constructor given one data element </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>data to be inserted as first node </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_classalbero_1ac5d5d288f18361134dd709b51eac2784"/><section>
+    <title>albero()<computeroutput>[3/3]</computeroutput></title>
+<indexterm><primary>albero</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>albero</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><computeroutput>template&lt;typename Iter &gt; </computeroutput><para><computeroutput><link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;<link linkend="_classalbero">::albero</link> (const Iter begin, const Iter end)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Construct a new albero object by giving two sets of iterators. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Template Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>Iter</entry><entry>
+<para>Iterator type </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>begin</entry><entry>
+<para>starting iterator </para>
+</entry>
+                            </row>
+                            <row>
+<entry>end</entry><entry>
+<para>ending iterator</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <note><title>Note</title>
+
+<para>The responsibility of giving valid iterators is left to the user </para>
+</note>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classalbero_ac5d5d288f18361134dd709b51eac2784_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classalbero_1a9bb2ccc4c6fe926b0124c1c3fe22516f"/><section>
+    <title>~albero()</title>
+<indexterm><primary>~albero</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>~albero</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput><link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::~<link linkend="_classalbero">albero</link> ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Destroy the albero object. </para>
+</para>
+
+<para><caution><title>Attention</title>
+
+<para>if <link linkend="_classalbero_1a9b9dbcd183b8b32cc04417b16c582862">subthree()</link> methos was used this is not automatically called! The user must manually delete. </para>
+</caution>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+</section>
+<section>
+<title>Member Function Documentation</title>
+<anchor xml:id="_classalbero_1a2c2871198f2a64be1b49c115f26ce93c"/><section>
+    <title>add()</title>
+<indexterm><primary>add</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>add</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput>void <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::add (const <link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> &amp; val)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>this function adds one data element to the structure </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>val</entry><entry>
+<para>reference to one data element </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+<anchor xml:id="_classalbero_1af0df859b68790dbda0667c36ccfa63ea"/><section>
+    <title>add_to()</title>
+<indexterm><primary>add_to</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>add_to</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput>void <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::add_to (<link linkend="_classalbero">albero</link>&lt; T, Comparator &gt; * a, <link linkend="_structalbero_1_1node">node</link> * start)<computeroutput>[inline]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>this function adds one element to external albero object </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>a</entry><entry>
+<para>pointer to other albero object </para>
+</entry>
+                            </row>
+                            <row>
+<entry>start</entry><entry>
+<para>first node (_root) of the external object</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <note><title>Note</title>
+
+<para>this function doesn&apos;t modify the current object if not passed as param </para>
+</note>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classalbero_af0df859b68790dbda0667c36ccfa63ea_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classalbero_1a9b6921216d92415493a6478c56599db8"/><section>
+    <title>begin()</title>
+<indexterm><primary>begin</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>begin</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput><link linkend="_classalbero_1_1const__iterator">const_iterator</link> <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::begin ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>this function returns the iterator for the first element of the binary three </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para><link linkend="_classalbero_1_1const__iterator">const_iterator</link> </para>
+</formalpara>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+<anchor xml:id="_classalbero_1a50b5304d1b1c9092efaa85dfd44b8fdd"/><section>
+    <title>end()</title>
+<indexterm><primary>end</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>end</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput><link linkend="_classalbero_1_1const__iterator">const_iterator</link> <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::end ( ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>this function returns an end iterator for the binary three </para>
+</para>
+
+<para><note><title>Note</title>
+
+<para>the binary three does not have only one end</para>
+</note>
+<formalpara><title>Returns</title>
+
+<para><link linkend="_classalbero_1_1const__iterator">const_iterator</link> </para>
+</formalpara>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+<anchor xml:id="_classalbero_1a3283e49f5948447b23c9306606b82575"/><section>
+    <title>find()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>find</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>find</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput>bool <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::find (const <link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> &amp; value) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>this function find the existance of one data element in the structure </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>value to be searched </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para><computeroutput>true</computeroutput> the value is present </para>
+
+<para><computeroutput>false</computeroutput> the value is not present </para>
+</formalpara>
+</para>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classalbero_a3283e49f5948447b23c9306606b82575_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classalbero_1a5e99efa2c22bff083ed2d9081347e3f4"/><section>
+    <title>find()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>find</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>find</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput>bool <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::find (<link linkend="_structalbero_1_1node">node</link> * n, const <link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> &amp; value) const<computeroutput>[inline]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>recursive function for finding one data element&apos;s existance in the structure </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>n</entry><entry>
+<para>starting node for recursion </para>
+</entry>
+                            </row>
+                            <row>
+<entry>value</entry><entry>
+<para>data that is to search </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>true the element is present </para>
+
+<para>false the element is <computeroutput>not</computeroutput> present </para>
+</formalpara>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classalbero_a5e99efa2c22bff083ed2d9081347e3f4_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classalbero_1a3f9b061f8ce944df2682fc8958f1e367"/><section>
+    <title>find_p()</title>
+<indexterm><primary>find_p</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>find_p</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput><link linkend="_structalbero_1_1node">node</link> * <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::find_p (<link linkend="_structalbero_1_1node">node</link> * n, const <link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> &amp; value) const<computeroutput>[inline]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>recursive function for finding one data element&apos;s node pointer in the structure </para>
+</para>
+
+<para><note><title>Note</title>
+
+<para>this function works only if the element is actually present in the structure. Thus the user must firt ensure that the element is present with find(value) method</para>
+</note>
+
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>n</entry><entry>
+<para>starting node for recursion </para>
+</entry>
+                            </row>
+                            <row>
+<entry>value</entry><entry>
+<para>data that is to search </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>node* pointer to the node that contains the data element </para>
+</formalpara>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classalbero_a3f9b061f8ce944df2682fc8958f1e367_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classalbero_1a854224711275fa21273fc05d43f6c48b"/><section>
+    <title>print()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>print</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>print</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput>void <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::print (std::ostream &amp; os, const <link linkend="_structalbero_1_1node">node</link> * n) const<computeroutput>[inline]</computeroutput>, <computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>recursive function for printing all the data elements in order </para>
+</para>
+
+<para><note><title>Note</title>
+
+<para>this function sends the stream to specific stream object NOT cout</para>
+</note>
+
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>os</entry><entry>
+<para>ostream object reference </para>
+</entry>
+                            </row>
+                            <row>
+<entry>n</entry><entry>
+<para>starting node for recursion </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classalbero_a854224711275fa21273fc05d43f6c48b_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classalbero_1a743b9c855317721470f6f293771cf4df"/><section>
+    <title>print()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>print</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>print</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput>void <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::print (void ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>print function for serializing the data in the structure </para>
+</para>
+
+<para><note><title>Note</title>
+
+<para>it is possible to stream the content to a ostream object with &lt;&lt;. </para>
+</note>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classalbero_a743b9c855317721470f6f293771cf4df_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_classalbero_1ad46b855b7622539682cf30c81573c54b"/><section>
+    <title>size()</title>
+<indexterm><primary>size</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>size</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput>const <link linkend="_classalbero_1aaf3730f56de85e62db22219ddfb46d0d">size_type</link> <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::size (void ) const<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>this function gives the number of data elements contained in the structure </para>
+</para>
+
+<para><formalpara><title>Returns</title>
+
+<para>const size_type </para>
+</formalpara>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+<anchor xml:id="_classalbero_1a9b9dbcd183b8b32cc04417b16c582862"/><section>
+    <title>subthree()</title>
+<indexterm><primary>subthree</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>subthree</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput><link linkend="_classalbero">albero</link> * <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::subthree (const <link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> &amp; value)<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>this function creates a new albero instance from one data element </para>
+</para>
+
+<para><caution><title>Attention</title>
+
+<para>The ownership of the new object pointer is given to the user</para>
+</caution>
+
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>starting value for branching</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                <formalpara><title>Returns</title>
+
+<para>albero* pointer to the new object </para>
+</formalpara>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="classalbero_a9b9dbcd183b8b32cc04417b16c582862_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Friends And Related Function Documentation</title>
+<anchor xml:id="_classalbero_1a6eaa6fa905b1e754e40f6e2829452fc0"/><section>
+    <title>operator&lt;&lt;</title>
+<indexterm><primary>operator&lt;&lt;</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>operator&lt;&lt;</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput>std::ostream &amp; operator&lt;&lt; (std::ostream &amp; os, const <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt; &amp; alb)<computeroutput>[friend]</computeroutput></computeroutput></para><simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_classalbero_1a95480de52cbe7df23e12ef05f4503283"/><section>
+    <title>_comp_func</title>
+<indexterm><primary>_comp_func</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>_comp_func</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput>Comparator <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::_comp_func<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>functor object for comparing values </para>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+<anchor xml:id="_classalbero_1aa8088c050e8b622731196807e4fd8fd8"/><section>
+    <title>_root</title>
+<indexterm><primary>_root</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>_root</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput><link linkend="_structalbero_1_1node">node</link>* <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::_root<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>first node of the three </para>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+<anchor xml:id="_classalbero_1a06876018985c57db843e3e31ecb3bbb3"/><section>
+    <title>_size</title>
+<indexterm><primary>_size</primary><secondary>albero&lt; T, Comparator &gt;</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;</primary><secondary>_size</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput><link linkend="_classalbero_1aaf3730f56de85e62db22219ddfb46d0d">size_type</link> <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::_size<computeroutput>[private]</computeroutput></computeroutput></para><para>
+
+<para>number of elements contained in the three </para>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+<para>
+The documentation for this class was generated from the following file:</para>
+/home/minime/Documents/Programmazione_cpp/tema_240724/C++/<link linkend="_albero_8h">albero.h</link></section>
+</section>

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_annotated" xml:lang="en-US">
+<title>Class List</title>
+Here are the classes, structs, unions and interfaces with brief descriptions:<link linkend="_classalbero">albero&lt; T, Comparator &gt;</link>
+<para>Class for rappresenting a binary three </para>
+<link linkend="_structcomp__double__cresc">comp_double_cresc</link><link linkend="_structcomp__double__decr">comp_double_decr</link><link linkend="_structcomp__int__cresc">comp_int_cresc</link><link linkend="_structcomp__int__decr">comp_int_decr</link><link linkend="_classalbero_1_1const__iterator">albero&lt; T, Comparator &gt;::const_iterator</link>
+<para>Read only iterator for the albero object </para>
+<link linkend="_structalbero_1_1node">albero&lt; T, Comparator &gt;::node</link>
+<para>Struct for single node in the three </para>
+</section>

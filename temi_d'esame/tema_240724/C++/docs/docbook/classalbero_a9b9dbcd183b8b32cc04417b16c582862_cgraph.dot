@@ -1,0 +1,21 @@
+digraph "albero::subthree"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="albero::subthree",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="this function creates a new albero instance from one data element"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="albero::add_to",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classalbero.html#af0df859b68790dbda0667c36ccfa63ea",tooltip="this function adds one element to external albero object"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="albero::add",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classalbero.html#a2c2871198f2a64be1b49c115f26ce93c",tooltip="this function adds one data element to the structure"];
+  Node2 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="albero::albero",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classalbero.html#ab2803c78407e4f223535d11aeb1a0772",tooltip="default constructor not permitted"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="albero::find",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classalbero.html#a5e99efa2c22bff083ed2d9081347e3f4",tooltip="recursive function for finding one data element's existance in the structure"];
+  Node5 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="albero::find_p",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classalbero.html#a3f9b061f8ce944df2682fc8958f1e367",tooltip="recursive function for finding one data element's node pointer in the structure"];
+  Node6 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

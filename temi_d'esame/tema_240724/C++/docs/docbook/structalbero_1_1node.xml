@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_structalbero_1_1node" xml:lang="en-US">
+<title>albero&lt; T, Comparator &gt;::node Struct Reference</title>
+<indexterm><primary>albero&lt; T, Comparator &gt;::node</primary></indexterm>
+<para>
+
+<para>struct for single node in the three </para>
+ 
+</para>
+Collaboration diagram for albero&lt; T, Comparator &gt;::node:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="structalbero_1_1node__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_structalbero_1_1node_1a7123b0be0cd5fc1bc3820371dc14b3f4">node</link> ()=delete</para>
+
+<para>Default empty constructor not permitted for safety reasons. </para>
+</listitem>
+            <listitem><para><link linkend="_structalbero_1_1node_1aa2e99a86ecb6656668220aed458a43fe">node</link> (const <link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> &amp;value)</para>
+
+<para>Construct a new node object from one value. </para>
+</listitem>
+            <listitem><para><link linkend="_structalbero_1_1node_1ad181ef3487813812756b6ead3fef337e">~node</link> ()</para>
+
+<para>Destroy the node object. </para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> <link linkend="_structalbero_1_1node_1a4838fe7f447d57c8364d98f1b5049f4c">_value</link></para>
+</listitem>
+            <listitem><para><link linkend="_structalbero_1_1node">node</link> * <link linkend="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4">_left</link></para>
+</listitem>
+            <listitem><para><link linkend="_structalbero_1_1node">node</link> * <link linkend="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde">_right</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+<simplesect><title>template&lt;typename T, typename Comparator&gt;
+struct albero&lt; T, Comparator &gt;::node</title></simplesect>
+
+<para>struct for single node in the three </para>
+
+
+
+<para><note><title>Note</title>
+
+<para>It is not possible to create a node outside the class and it is not possible to create an empty node </para>
+</note>
+</para>
+</section>
+<section>
+<title>Constructor &amp; Destructor Documentation</title>
+<anchor xml:id="_structalbero_1_1node_1a7123b0be0cd5fc1bc3820371dc14b3f4"/><section>
+    <title>node()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>node</primary><secondary>albero&lt; T, Comparator &gt;::node</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;::node</primary><secondary>node</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput><link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::node::node ( )<computeroutput>[delete]</computeroutput></computeroutput></para><para>
+
+<para>Default empty constructor not permitted for safety reasons. </para>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+<anchor xml:id="_structalbero_1_1node_1aa2e99a86ecb6656668220aed458a43fe"/><section>
+    <title>node()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>node</primary><secondary>albero&lt; T, Comparator &gt;::node</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;::node</primary><secondary>node</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput><link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::node::node (const <link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> &amp; value)<computeroutput>[inline]</computeroutput>, <computeroutput>[explicit]</computeroutput></computeroutput></para><para>
+
+<para>Construct a new node object from one value. </para>
+</para>
+
+<para>
+                <formalpara>
+                    <title>
+Parameters</title>
+                    <para>
+                    <table frame="all">
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+<entry>value</entry><entry>
+<para>data to sotore in one node </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                    </para>
+                </formalpara>
+                </para>
+</section>
+<anchor xml:id="_structalbero_1_1node_1ad181ef3487813812756b6ead3fef337e"/><section>
+    <title>~node()</title>
+<indexterm><primary>~node</primary><secondary>albero&lt; T, Comparator &gt;::node</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;::node</primary><secondary>~node</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput><link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::node::~node ( )<computeroutput>[inline]</computeroutput></computeroutput></para><para>
+
+<para>Destroy the node object. </para>
+</para>
+
+<para><note><title>Note</title>
+
+<para>when this node is destroyed, all the nodes connected will be deleted with it </para>
+</note>
+</para>
+<simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+</section>
+<section>
+<title>Member Data Documentation</title>
+<anchor xml:id="_structalbero_1_1node_1a0474ba73900102d6bb2cb925568ea9f4"/><section>
+    <title>_left</title>
+<indexterm><primary>_left</primary><secondary>albero&lt; T, Comparator &gt;::node</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;::node</primary><secondary>_left</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput><link linkend="_structalbero_1_1node">node</link>* <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::node::_left</computeroutput></para><simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+<anchor xml:id="_structalbero_1_1node_1aa8cd2b4e723a60018c7c16e2b14f0bde"/><section>
+    <title>_right</title>
+<indexterm><primary>_right</primary><secondary>albero&lt; T, Comparator &gt;::node</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;::node</primary><secondary>_right</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput><link linkend="_structalbero_1_1node">node</link>* <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::node::_right</computeroutput></para><simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+<anchor xml:id="_structalbero_1_1node_1a4838fe7f447d57c8364d98f1b5049f4c"/><section>
+    <title>_value</title>
+<indexterm><primary>_value</primary><secondary>albero&lt; T, Comparator &gt;::node</secondary></indexterm>
+<indexterm><primary>albero&lt; T, Comparator &gt;::node</primary><secondary>_value</secondary></indexterm>
+<computeroutput>template&lt;typename T , typename Comparator &gt; </computeroutput><para><computeroutput><link linkend="_classalbero_1a472cbd49994891952384d4cc1a8e7c19">value_type</link> <link linkend="_classalbero">albero</link>&lt; T, Comparator &gt;::node::_value</computeroutput></para><simplesect><title>Examples</title><link linkend="__2home_2minime_2Documents_2Programmazione_cpp_2tema_240724_2C_09_09_2albero_8h-example">/home/minime/Documents/Programmazione_cpp/tema_240724/C++/albero.h</link>.</simplesect>
+</section>
+<para>
+The documentation for this struct was generated from the following file:</para>
+/home/minime/Documents/Programmazione_cpp/tema_240724/C++/<link linkend="_albero_8h">albero.h</link></section>
+</section>

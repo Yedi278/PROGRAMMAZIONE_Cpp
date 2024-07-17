@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test__lib_8h" xml:lang="en-US">
+<title>/home/minime/Documents/Programmazione_cpp/tema_240724/C++/test_lib.h File Reference</title>
+<indexterm><primary>/home/minime/Documents/Programmazione_cpp/tema_240724/C++/test_lib.h</primary></indexterm>
+<para>
+
+<para>file for Testing functions of albero class </para>
+ 
+</para>
+<programlisting linenumbering="unnumbered">#include &quot;albero.h&quot;
+#include &lt;cassert&gt;
+</programlisting>Include dependency graph for test_lib.h:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="test__lib_8h__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+This graph shows which files directly or indirectly include this file:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="test__lib_8h__dep__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Classes    </title>
+        <itemizedlist>
+            <listitem><para>struct <link linkend="_structcomp__int__cresc">comp_int_cresc</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structcomp__int__decr">comp_int_decr</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structcomp__double__cresc">comp_double_cresc</link></para>
+</listitem>
+            <listitem><para>struct <link linkend="_structcomp__double__decr">comp_double_decr</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Functions    </title>
+        <itemizedlist>
+            <listitem><para>void <link linkend="_test__lib_8h_1a7f2aa330e01f9e781bd6f8aeceafa8df">test_const1</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_test__lib_8h_1aa0870c6a13ac95e5feba8089a2c86278">test_const2</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_test__lib_8h_1a999730de5f2d49e797d0fec2ef07bc36">test_find</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_test__lib_8h_1a6d86cca3aa376268e7394cf251519bef">test_add</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_test__lib_8h_1a7baa894d18ad082bdf4082cf2958c18c">test_subthree</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_test__lib_8h_1a21e5e40bceb09230abbc58695d7c3520">test_iter</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_test__lib_8h_1a7b738b2ee93009e3abe1132efa79bf3f">test_printIF</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para>file for Testing functions of albero class </para>
+
+<para><formalpara><title>Author</title>
+
+<para>Yehan Sanjula Edirisinghe Mudiyanselage (<link xlink:href="mailto:y.edirisinghemudi@campus.unimib.it">y.edirisinghemudi@campus.unimib.it</link>) </para>
+</formalpara>
+<formalpara><title>Version</title>
+
+<para>0.1 </para>
+</formalpara>
+<formalpara><title>Date</title>
+
+<para>17-07-2024</para>
+</formalpara>
+<formalpara><title>Copyright</title>
+
+<para>Copyright (c) 2024 </para>
+</formalpara>
+</para>
+</section>
+<section>
+<title>Function Documentation</title>
+<anchor xml:id="_test__lib_8h_1a6d86cca3aa376268e7394cf251519bef"/><section>
+    <title>test_add()</title>
+<indexterm><primary>test_add</primary><secondary>test_lib.h</secondary></indexterm>
+<indexterm><primary>test_lib.h</primary><secondary>test_add</secondary></indexterm>
+<para><computeroutput>void test_add ( )</computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="test__lib_8h_a6d86cca3aa376268e7394cf251519bef_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_test__lib_8h_1a7f2aa330e01f9e781bd6f8aeceafa8df"/><section>
+    <title>test_const1()</title>
+<indexterm><primary>test_const1</primary><secondary>test_lib.h</secondary></indexterm>
+<indexterm><primary>test_lib.h</primary><secondary>test_const1</secondary></indexterm>
+<para><computeroutput>void test_const1 ( )</computeroutput></para></section>
+<anchor xml:id="_test__lib_8h_1aa0870c6a13ac95e5feba8089a2c86278"/><section>
+    <title>test_const2()</title>
+<indexterm><primary>test_const2</primary><secondary>test_lib.h</secondary></indexterm>
+<indexterm><primary>test_lib.h</primary><secondary>test_const2</secondary></indexterm>
+<para><computeroutput>void test_const2 ( )</computeroutput></para></section>
+<anchor xml:id="_test__lib_8h_1a999730de5f2d49e797d0fec2ef07bc36"/><section>
+    <title>test_find()</title>
+<indexterm><primary>test_find</primary><secondary>test_lib.h</secondary></indexterm>
+<indexterm><primary>test_lib.h</primary><secondary>test_find</secondary></indexterm>
+<para><computeroutput>void test_find ( )</computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="test__lib_8h_a999730de5f2d49e797d0fec2ef07bc36_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_test__lib_8h_1a21e5e40bceb09230abbc58695d7c3520"/><section>
+    <title>test_iter()</title>
+<indexterm><primary>test_iter</primary><secondary>test_lib.h</secondary></indexterm>
+<indexterm><primary>test_lib.h</primary><secondary>test_iter</secondary></indexterm>
+<para><computeroutput>void test_iter ( )</computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="test__lib_8h_a21e5e40bceb09230abbc58695d7c3520_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_test__lib_8h_1a7b738b2ee93009e3abe1132efa79bf3f"/><section>
+    <title>test_printIF()</title>
+<indexterm><primary>test_printIF</primary><secondary>test_lib.h</secondary></indexterm>
+<indexterm><primary>test_lib.h</primary><secondary>test_printIF</secondary></indexterm>
+<para><computeroutput>void test_printIF ( )</computeroutput></para></section>
+<anchor xml:id="_test__lib_8h_1a7baa894d18ad082bdf4082cf2958c18c"/><section>
+    <title>test_subthree()</title>
+<indexterm><primary>test_subthree</primary><secondary>test_lib.h</secondary></indexterm>
+<indexterm><primary>test_lib.h</primary><secondary>test_subthree</secondary></indexterm>
+<para><computeroutput>void test_subthree ( )</computeroutput></para>Here is the call graph for this function:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="test__lib_8h_a7baa894d18ad082bdf4082cf2958c18c_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+</section>

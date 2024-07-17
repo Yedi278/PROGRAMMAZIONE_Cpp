@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_test__lib_8h_source" xml:lang="en-US">
+<title>/home/minime/Documents/Programmazione_cpp/tema_240724/C++/test_lib.h</title>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered">1 
+12 <emphasis role="preprocessor">#ifndef&#32;TEST_LIB_H</emphasis>
+13 <emphasis role="preprocessor">#define&#32;TEST_LIB_H</emphasis>
+14 
+15 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="_albero_8h">albero.h</link>&quot;</emphasis>
+16 <emphasis role="preprocessor">#include&#32;&lt;cassert&gt;</emphasis>
+17 
+18 <emphasis role="keyword">struct&#32;</emphasis><link linkend="_structcomp__int__cresc">comp_int_cresc</link>{
+19 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_structcomp__int__cresc_1a697e665979b2cd95c2af3f7a9fdb599e">operator()</link>(<emphasis role="keywordtype">int</emphasis>&#32;a,&#32;<emphasis role="keywordtype">int</emphasis>&#32;b){
+20 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;a&lt;b;
+21 &#32;&#32;&#32;&#32;}
+22 };
+23 
+24 <emphasis role="keyword">struct&#32;</emphasis><link linkend="_structcomp__int__decr">comp_int_decr</link>{
+25 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_structcomp__int__decr_1aed64b5ec256572cd6d37004b8c5f054e">operator()</link>(<emphasis role="keywordtype">int</emphasis>&#32;a,&#32;<emphasis role="keywordtype">int</emphasis>&#32;b){
+26 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;a&gt;b;
+27 &#32;&#32;&#32;&#32;}
+28 };
+29 
+30 <emphasis role="keyword">struct&#32;</emphasis><link linkend="_structcomp__double__cresc">comp_double_cresc</link>{
+31 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_structcomp__double__cresc_1ae75984527143d5610043d14bd7a9e8ed">operator()</link>(<emphasis role="keywordtype">double</emphasis>&#32;a,&#32;<emphasis role="keywordtype">double</emphasis>&#32;b){
+32 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;a&lt;b;
+33 &#32;&#32;&#32;&#32;}
+34 };
+35 
+36 <emphasis role="keyword">struct&#32;</emphasis><link linkend="_structcomp__double__decr">comp_double_decr</link>{
+37 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_structcomp__double__decr_1aeeedca1f37e35e58f766d3df65202f2d">operator()</link>(<emphasis role="keywordtype">double</emphasis>&#32;a,&#32;<emphasis role="keywordtype">double</emphasis>&#32;b){
+38 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;a&gt;b;
+39 &#32;&#32;&#32;&#32;}
+40 };
+41 
+42 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_test__lib_8h_1a7f2aa330e01f9e781bd6f8aeceafa8df">test_const1</link>(){
+43 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>{
+44 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero">albero&lt;int, comp_int_cresc&gt;</link>&#32;a(23);
+45 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;a&#32;&lt;&lt;&#32;std::endl;
+46 &#32;&#32;&#32;&#32;}<emphasis role="keywordflow">catch</emphasis>(...){
+47 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>;
+48 &#32;&#32;&#32;&#32;}
+49 &#32;&#32;&#32;&#32;<link linkend="_albero_8h_1adadcbb9e426e1bf6bd7ac06dac7f958b">LOG</link>(<emphasis role="stringliteral">&quot;test_const1&#32;succeded!&quot;</emphasis>);
+50 }
+51 
+52 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_test__lib_8h_1aa0870c6a13ac95e5feba8089a2c86278">test_const2</link>(){
+53 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>{
+54 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;data[10]&#32;=&#32;{1,2,3,4,5,6,7,8,9,10};
+55 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero">albero&lt;int, comp_int_cresc&gt;</link>&#32;a(data,&#32;(data+10));
+56 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;input:&#32;[1,2,3,4,5,6,7,8,9,10]&#32;&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+57 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;a&#32;&lt;&lt;&#32;std::endl;
+58 &#32;&#32;&#32;&#32;}<emphasis role="keywordflow">catch</emphasis>(...){
+59 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>;
+60 &#32;&#32;&#32;&#32;}
+61 &#32;&#32;&#32;&#32;<link linkend="_albero_8h_1adadcbb9e426e1bf6bd7ac06dac7f958b">LOG</link>(<emphasis role="stringliteral">&quot;test_const2&#32;succeded!&quot;</emphasis>);
+62 }
+63 
+64 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_test__lib_8h_1a999730de5f2d49e797d0fec2ef07bc36">test_find</link>(){
+65 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>{
+66 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero">albero&lt;int,comp_int_cresc&gt;</link>&#32;a(10);
+67 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert(a.<link linkend="_classalbero_1a5e99efa2c22bff083ed2d9081347e3f4">find</link>(10)&#32;==&#32;<emphasis role="keyword">true</emphasis>);
+68 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;assert(a.<link linkend="_classalbero_1a5e99efa2c22bff083ed2d9081347e3f4">find</link>(5)&#32;==&#32;<emphasis role="keyword">false</emphasis>);
+69 &#32;&#32;&#32;&#32;}<emphasis role="keywordflow">catch</emphasis>(...){
+70 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>;
+71 &#32;&#32;&#32;&#32;}
+72 &#32;&#32;&#32;&#32;<link linkend="_albero_8h_1adadcbb9e426e1bf6bd7ac06dac7f958b">LOG</link>(<emphasis role="stringliteral">&quot;test_find&#32;succeded!&quot;</emphasis>);
+73 }
+74 
+75 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_test__lib_8h_1a6d86cca3aa376268e7394cf251519bef">test_add</link>(){
+76 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>{
+77 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero">albero&lt;int, comp_int_cresc&gt;</link>&#32;a(1);
+78 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;a.<link linkend="_classalbero_1a2c2871198f2a64be1b49c115f26ce93c">add</link>(10);
+79 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;a.<link linkend="_classalbero_1a2c2871198f2a64be1b49c115f26ce93c">add</link>(20);
+80 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;a.<link linkend="_classalbero_1a2c2871198f2a64be1b49c115f26ce93c">add</link>(0);
+81 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;a.<link linkend="_classalbero_1a2c2871198f2a64be1b49c115f26ce93c">add</link>(1);
+82 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;a&#32;&lt;&lt;&#32;std::endl;
+83 &#32;&#32;&#32;&#32;}<emphasis role="keywordflow">catch</emphasis>(...){
+84 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>;
+85 &#32;&#32;&#32;&#32;}
+86 
+87 }
+88 
+89 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_test__lib_8h_1a7baa894d18ad082bdf4082cf2958c18c">test_subthree</link>(){
+90 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>{
+91 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+92 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;data[10]&#32;=&#32;{1,2,3,4,5,6,7,8,9,10};
+93 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero">albero&lt;int, comp_int_cresc&gt;</link>&#32;a(data,&#32;(data+10));
+94 
+95 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero">albero&lt;int, comp_int_cresc&gt;</link>*&#32;b&#32;=&#32;a.<link linkend="_classalbero_1a9b9dbcd183b8b32cc04417b16c582862">subthree</link>(6);
+96 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+97 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;a&#32;&lt;&lt;&#32;std::endl;
+98 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;*b&#32;&lt;&lt;&#32;std::endl;
+99 
+100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;b;
+101 &#32;&#32;&#32;&#32;}<emphasis role="keywordflow">catch</emphasis>(...){
+102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>;
+103 &#32;&#32;&#32;&#32;}
+104 }
+105 
+106 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_test__lib_8h_1a21e5e40bceb09230abbc58695d7c3520">test_iter</link>(){
+107 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">try</emphasis>{
+108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;data[10]&#32;=&#32;{1,2,3,4,5,6,7,8,9,10};
+109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_classalbero">albero&lt;int, comp_int_cresc&gt;</link>&#32;a(data,&#32;(data+10));
+110 
+111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;a&#32;&lt;&lt;&#32;std::endl;
+112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;*(a.<link linkend="_classalbero_1a9b6921216d92415493a6478c56599db8">begin</link>())&#32;&lt;&lt;std::endl;
+113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+114 &#32;&#32;&#32;&#32;}<emphasis role="keywordflow">catch</emphasis>(...){
+115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">throw</emphasis>;
+116 &#32;&#32;&#32;&#32;}
+117 }
+118 
+119 <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_test__lib_8h_1a7b738b2ee93009e3abe1132efa79bf3f">test_printIF</link>(){
+120 
+121 &#32;&#32;&#32;&#32;<emphasis role="keyword">struct&#32;</emphasis>crit_P{
+122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;operator()(<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;value){
+123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((value%2)&#32;==&#32;0)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+126 &#32;&#32;&#32;&#32;};
+127 
+128 &#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;data[10]&#32;=&#32;{1,2,3,4,5,6,7,8,9,10};
+129 &#32;&#32;&#32;&#32;<link linkend="_classalbero">albero&lt;int, comp_int_cresc&gt;</link>&#32;a(data,&#32;(data+10));
+130 
+131 &#32;&#32;&#32;&#32;std::cout&#32;&lt;&lt;&#32;a&#32;&lt;&lt;&#32;std::endl;
+132 &#32;&#32;&#32;&#32;printIF&lt;int,&#32;comp_int_cresc,&#32;crit_P&gt;&#32;(a);
+133 
+134 }
+135 
+136 <emphasis role="preprocessor">#endif</emphasis>
+</programlisting></section>
