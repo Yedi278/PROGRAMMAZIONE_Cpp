@@ -32,7 +32,7 @@ public slots:
     void onClearClicked();
 
 public:
-    void solve();
+    bool solve(QSpinBox* cells[][9],const int& r,const int& c);
     void clear();
 
     ~sudoku();

@@ -23,8 +23,8 @@ sudoku::sudoku(QWidget *parent)
             cells[i][j]->setFixedSize(30,30);
             cells[i][j]->setAlignment(Qt::AlignCenter);
             cells[i][j]->setButtonSymbols(QAbstractSpinBox::NoButtons);
-            cells[i][j]->setRange(-1,9);
-            cells[i][j]->setValue(-1);
+            cells[i][j]->setRange(0,9);
+            cells[i][j]->setValue(0);
             cells_grid->addWidget(cells[i][j], i,j);
         }
     }
@@ -60,18 +60,61 @@ void sudoku::onExitClicked(){
     this->close();
 }
 
+bool isValid(QSpinBox* cells[][9], const int& row, const int& col){
+    if(cells[row][col]->value() == 0) return true;
+    for(int i=0; i<9; ++i){
+        if(cells[row][i]->value() == cells[row][col]->value() ) return false;
+        if(cells[i][col]->value() == cells[row][col]->value() ) return false;
+    }
+    return true;
+}
+
+bool sudoku::solve(QSpinBox* cells[][9],const int& r,const int& c){
+
+    if(cells[r][c]->value() != 0){ //if not empty, skip
+
+        if( (c+1) > 9){            //if out of columns
+            if( (r+1) > 9){        //if also out of rows
+                return true;
+            }
+            return solve(cells, r+1, 0);
+        }
+        return solve(cells, r, c+1);    //go to next column member
+    }
+
+    //if empty, change the value
+    while(!isValid(cells, r, c)){
+        if(cells[r][c]->value()+1 > 9) return false; //if no value is valid break
+        cells[r][c]->setValue(cells[r][c]->value()+1);
+    }
+
+    if( (c+1) > 9){            //if out of columns
+        if( (r+1) > 9){        //if also out of rows
+            return true;
+        }
+        jmp:
+        if(solve(cells, r+1, 0)){
+            return true;
+        }else{
+            if(cells[r][c]->value()-1 <= 0) return false;
+            cells[r][c]->setValue(cells[r][c]->value()-1);
+            goto jmp;
+        }
+    }
+    return solve(cells, r, c+1);    //go to next column member
+}
 
 void sudoku::onSolveClicked(){
-    for(int i=0; i<9; ++i)
-        for(int j=0; j<9; ++j){
-            if(cells[i][j]->value() != -1){
-                std::cout << i << ":" << j << std::endl;
-            }
-        }
+    int i=1,j=1;
+    if(solve(this->cells, i,j)){
+        std::cout << "solved" << std::endl;
+    }else{
+        std::cout << "Impossible" << std::endl;
+    }
 }
 
 void sudoku::onClearClicked(){
     for(int i=0; i<9; ++i)
         for(int j=0; j<9; ++j)
-            cells[i][j]->setValue(-1);
+            cells[i][j]->setValue(0);
 }
