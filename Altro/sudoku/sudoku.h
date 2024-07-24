@@ -7,6 +7,7 @@
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QSpinBox>
 
 class sudoku : public QMainWindow
 {
@@ -19,12 +20,18 @@ public:
     QHBoxLayout* h_grid;
     QGridLayout* cells_grid;
 
-    QLineEdit* cells[9][9];
+    QSpinBox* cells[9][9];
 
     QPushButton* solve_b;
     QPushButton* clear_b;
     QPushButton* exit_b;
 
+public slots:
+    void onExitClicked();
+    void onSolveClicked();
+    void onClearClicked();
+
+public:
     void solve();
     void clear();
 
