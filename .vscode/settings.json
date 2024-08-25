@@ -46,7 +46,9 @@
     "compare": "cpp",
     "concepts": "cpp",
     "string_view": "cpp",
-    "numbers": "cpp"
+    "numbers": "cpp",
+    "xmemory": "cpp",
+    "xstring": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
