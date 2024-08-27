@@ -71,7 +71,7 @@ private:
     std::vector<login_info> credentials;
 
     QWidget* admin_window;
-    QTableWidget* table;
+    QTableView* table;
 
 };
 #endif // LOGINDIALOG_H

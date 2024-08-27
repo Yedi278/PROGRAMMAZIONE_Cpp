@@ -9,16 +9,13 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    adminwidget.cpp \
     main.cpp \
     logindialog.cpp
 
 HEADERS += \
-    adminwidget.h \
     logindialog.h
 
 FORMS += \
-    adminwidget.ui \
     logindialog.ui
 
 # Default rules for deployment.

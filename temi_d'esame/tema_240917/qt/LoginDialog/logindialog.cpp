@@ -18,10 +18,13 @@ LoginDialog::LoginDialog(QWidget *parent)
     //creazione finestra admin
 
     admin_window = new QWidget(0);
-    table = new QTableWidget();
+    table = new QTableView();
     QHBoxLayout* lay = new QHBoxLayout();
     lay->addWidget(table);
-    table->setColumnCount(4);
+    QHeaderView* header = new QHeaderView(Qt::Horizontal, nullptr);
+    table->setVerticalHeader(header);
+    // table->setColumnCount(4);
+    // table->
     admin_window->setLayout(lay);
 
 
