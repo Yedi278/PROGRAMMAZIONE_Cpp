@@ -1,22 +1,52 @@
-// #include "Error in " Util.relativeFilePath('C:/Users/Yehan/Documents/Programming/PROGRAMMAZIONE_Cpp/temi_d' esame / tema_240917 / qt / logindialog.h ', ' C : / Users / Yehan / Documents / Programming / PROGRAMMAZIONE_Cpp / temi_d 'esame/tema_240917/qt' + '/' + Util.path('logindialog.cpp')) ": SyntaxError: Expected token `)'"
+#include <iostream>
+#include <QMessageBox>
+#include <QHBoxLayout>
+
 #include "logindialog.h"
 #include "ui_logindialog.h"
-#include <iostream>
-#include "QMessageBox"
 
 LoginDialog::LoginDialog(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::LoginDialog)
+    , ui(new Ui::LoginDialog), admin_window(nullptr)
 {
+    //aggiunta dell'admin
+
     ui->setupUi(this);
-    login_info admin("admin", "admin", "admin@pas.com", "admin", 1, 1, 1, 0);
+    login_info admin("admin", "admin", "admin@pas.com", "admin", 1, 1, 1, 0, 0);
     credentials.push_back(admin);
+
+    //creazione finestra admin
+
+    admin_window = new QWidget(0);
+    table = new QTableWidget();
+    QHBoxLayout* lay = new QHBoxLayout();
+    lay->addWidget(table);
+    table->setColumnCount(4);
+    admin_window->setLayout(lay);
+
 
 }
 
 LoginDialog::~LoginDialog()
 {
+    delete admin_window;
     delete ui;
+}
+
+void LoginDialog::cleanUI(){
+    ui->iscrizione_nome->setText(QString(""));
+    ui->iscrizione_cognome->setText(QString(""));
+    ui->iscrizione_mail->setText(QString(""));
+    ui->iscrizione_password->setText(QString(""));
+    ui->iscrizione_uomo->setAutoExclusive(false);
+    ui->iscrizione_donna->setAutoExclusive(false);
+    ui->iscrizione_donna->setChecked(false);
+    ui->iscrizione_uomo->setChecked(false);
+    ui->iscrizione_uomo->setAutoExclusive(true);
+    ui->iscrizione_donna->setAutoExclusive(true);
+
+    ui->login_email->setText(QString(""));
+    ui->login_password->setText(QString(""));
 }
 
 void LoginDialog::on_login_accedi_clicked()
@@ -29,24 +59,40 @@ void LoginDialog::on_login_accedi_clicked()
         std::string password = ui->login_password->text().toStdString();
         if( i._email_or_tel == mail && i._password == password ){
             message.setText("Benvenuto!, Accesso Riuscito!");
+            cleanUI();
             message.exec();
+            if(mail == credentials[0]._email_or_tel){
+                cleanUI();
+                admin_window->show();
+                // message.critical(0,"Error","Admin Page");
+            }
             return;
         }
     }
 
     message.critical(0,"Errore","Impossibile effettuare l'accesso, ricontrollare e-mail/n.telefono e password!");
+    cleanUI();
 }
 
 void LoginDialog::on_iscrizione_bottone_clicked()
 {
+    QMessageBox messageBox;
     std::string nome = ui->iscrizione_nome->text().toStdString();
     std::string cognome = ui->iscrizione_cognome->text().toStdString();
     std::string email = ui->iscrizione_mail->text().toStdString();
     std::string password = ui->iscrizione_password->text().toStdString();
     bool genere;
 
-    QDate birthday;
-    birthday.setDate(ui->iscrizione_anno->date().year(), ui->iscrizione_mese->date().month(), ui->iscrizione_giorno->date().day());
+    for(auto i : credentials){
+        if(i._email_or_tel == email){
+            messageBox.critical(0, "Errore", "Account già presente, provare il login!");
+            return;
+        }
+    }
+
+    //Controllo Età
+
+    QDate birthday(ui->iscrizione_anno->date().year(), ui->iscrizione_mese->date().month(), ui->iscrizione_giorno->date().day());
 
     QDate now = QDateTime::currentDateTime().date();
 
@@ -61,44 +107,60 @@ void LoginDialog::on_iscrizione_bottone_clicked()
         age = year_diff-1;
     }
 
-    unsigned int giorno = static_cast<unsigned int>(birthday.day());
-    unsigned int mese = static_cast<unsigned int>(birthday.month());
-    unsigned int anno = static_cast<unsigned int>(birthday.year());
+    if(age < 18){
+        messageBox.critical(0,"Errore", "E' necessario essere maggiorenni per iscriversi!");
+    }
 
-    QMessageBox messageBox;
-    // messageBox.setFixedSize(500,400);
+    //Controllo insimento dati
 
     if(ui->iscrizione_donna->isChecked() == true){
-        // std::cout << "Donna is checked!" << std::endl;
+
         genere = 1;
+
     }else if(ui->iscrizione_uomo->isChecked() == true){
-        // std::cout << "Uomo is checked!" << std::endl;
+
         genere = 0;
+
     }else{
+
         messageBox.critical(0,"Errore","Inserire il sesso!");
-        // std::cout << "No Gender!" << std::endl;
         return;
     }
 
     if(nome.length()==0){
+
         messageBox.critical(0,"Errore", "Inserire un Nome!");
         return;
     }
     if(cognome.length()==0){
+
         messageBox.critical(0,"Errore", "Inserire un Cognome!");
         return;
     }
     if(email.length()==0){
+
         messageBox.critical(0,"Errore", "Inserire una E-mail o un Numero di telefono!");
         return;
     }
     if(password.length()==0){
+
         messageBox.critical(0,"Errore", "Inserire una Password!");
         return;
     }
 
-    login_info new_user(nome, cognome, email, password, giorno, mese, anno, genere);
+    //Aggiunta del nuovo utente
+
+    login_info new_user(nome, cognome, email, password,
+                        static_cast<unsigned int>(birthday.day()),
+                        static_cast<unsigned int>(birthday.month()),
+                        static_cast<unsigned int>(birthday.year()),
+                        genere, age);
+
+    //Rimozione dati dai lineEdit
+
     credentials.push_back(new_user);
+    cleanUI();
 
+    messageBox.setText("Iscrizione Eseguita con Successo!");
+    messageBox.exec();
 }
-
