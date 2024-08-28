@@ -50,7 +50,8 @@ public:
     QPushButton *login_accedi;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer_4;
-    QLabel *Recupero_accesso;
+    QPushButton *recupero_password;
+    QSpacerItem *horizontalSpacer_5;
     QVBoxLayout *verticalLayout_5;
     QHBoxLayout *horizontalLayout_5;
     QLineEdit *iscrizione_nome;
@@ -177,10 +178,15 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_4);
 
-        Recupero_accesso = new QLabel(verticalLayoutWidget_4);
-        Recupero_accesso->setObjectName("Recupero_accesso");
+        recupero_password = new QPushButton(verticalLayoutWidget_4);
+        recupero_password->setObjectName("recupero_password");
+        recupero_password->setFlat(true);
 
-        horizontalLayout_3->addWidget(Recupero_accesso);
+        horizontalLayout_3->addWidget(recupero_password);
+
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_5);
 
 
         verticalLayout_4->addLayout(horizontalLayout_3);
@@ -266,6 +272,9 @@ public:
 
         retranslateUi(LoginDialog);
 
+        recupero_password->setDefault(false);
+
+
         QMetaObject::connectSlotsByName(LoginDialog);
     } // setupUi
 
@@ -276,7 +285,7 @@ public:
         label_2->setText(QCoreApplication::translate("LoginDialog", "Password", nullptr));
         label_3->setText(QString());
         login_accedi->setText(QCoreApplication::translate("LoginDialog", "Accedi", nullptr));
-        Recupero_accesso->setText(QCoreApplication::translate("LoginDialog", "Non ricordi pi\303\271 come accedere all'account?", nullptr));
+        recupero_password->setText(QCoreApplication::translate("LoginDialog", "Non ricordi pi\303\271 come accedere all'account?", nullptr));
 #if QT_CONFIG(whatsthis)
         iscrizione_nome->setWhatsThis(QString());
 #endif // QT_CONFIG(whatsthis)

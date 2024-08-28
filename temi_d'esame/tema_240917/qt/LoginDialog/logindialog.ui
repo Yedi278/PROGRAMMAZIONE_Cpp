@@ -283,11 +283,30 @@
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="Recupero_accesso">
+           <widget class="QPushButton" name="recupero_password">
             <property name="text">
              <string>Non ricordi più come accedere all'account?</string>
             </property>
+            <property name="default">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
            </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </item>
