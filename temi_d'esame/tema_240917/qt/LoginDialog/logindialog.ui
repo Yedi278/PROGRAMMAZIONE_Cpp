@@ -381,6 +381,13 @@
         </item>
         <item>
          <widget class="QDateEdit" name="iscrizione_anno">
+          <property name="maximumDate">
+           <date>
+            <year>2024</year>
+            <month>12</month>
+            <day>31</day>
+           </date>
+          </property>
           <property name="displayFormat">
            <string>yyyy</string>
           </property>

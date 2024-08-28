@@ -1,6 +1,5 @@
 #include "SparseMatrix.hpp"
 #include "TestLib.hpp"
-#include <iostream>
 
 
 int main(int argv, char** argc){

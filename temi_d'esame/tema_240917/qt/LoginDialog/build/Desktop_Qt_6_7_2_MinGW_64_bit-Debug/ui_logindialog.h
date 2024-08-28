@@ -9,6 +9,7 @@
 #ifndef UI_LOGINDIALOG_H
 #define UI_LOGINDIALOG_H
 
+#include <QtCore/QDate>
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDateEdit>
@@ -237,6 +238,7 @@ public:
 
         iscrizione_anno = new QDateEdit(centralwidget);
         iscrizione_anno->setObjectName("iscrizione_anno");
+        iscrizione_anno->setMaximumDate(QDate(2024, 12, 31));
 
         horizontalLayout_6->addWidget(iscrizione_anno);
 
