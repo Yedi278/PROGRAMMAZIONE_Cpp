@@ -1,6 +1,9 @@
 #include <iostream>
 #include <QMessageBox>
 #include <QHBoxLayout>
+#include <QHeaderView>
+#include <QStandardItemModel>
+#include <QStandardItem>
 
 #include "logindialog.h"
 #include "ui_logindialog.h"
@@ -18,16 +21,12 @@ LoginDialog::LoginDialog(QWidget *parent)
     //creazione finestra admin
 
     admin_window = new QWidget(0);
-    table = new QTableView();
     QHBoxLayout* lay = new QHBoxLayout();
+    table = new QListWidget();
     lay->addWidget(table);
-    QHeaderView* header = new QHeaderView(Qt::Horizontal, nullptr);
-    table->setVerticalHeader(header);
-    // table->setColumnCount(4);
-    // table->
     admin_window->setLayout(lay);
 
-
+    // updateAdminUIList();
 }
 
 LoginDialog::~LoginDialog()
@@ -65,9 +64,11 @@ void LoginDialog::on_login_accedi_clicked()
             cleanUI();
             message.exec();
             if(mail == credentials[0]._email_or_tel){
+
                 cleanUI();
+                updateAdminUIList();
                 admin_window->show();
-                // message.critical(0,"Error","Admin Page");
+
             }
             return;
         }
@@ -166,4 +167,12 @@ void LoginDialog::on_iscrizione_bottone_clicked()
 
     messageBox.setText("Iscrizione Eseguita con Successo!");
     messageBox.exec();
+}
+
+void LoginDialog::updateAdminUIList(){
+    table->clear();
+    table->addItem(QString("Users - mail/tel - password - age"));
+    for(auto i : credentials){
+        table->addItem(QString::fromStdString(i._email_or_tel + " - " + i._password));
+    }
 }

@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QWidget>
 #include <QTableWidget>
+#include <QListWidget>
+#include <QtCharts>
 #include "string"
 
 QT_BEGIN_NAMESPACE
@@ -61,17 +63,20 @@ public:
     ~LoginDialog();
 
 private slots:
-    void cleanUI();
-    void on_login_accedi_clicked();
 
+    void cleanUI();
+
+    void on_login_accedi_clicked();
     void on_iscrizione_bottone_clicked();
+
+    void updateAdminUIList();
 
 private:
     Ui::LoginDialog *ui;
     std::vector<login_info> credentials;
 
     QWidget* admin_window;
-    QTableView* table;
+    QListWidget* table;
 
 };
 #endif // LOGINDIALOG_H
