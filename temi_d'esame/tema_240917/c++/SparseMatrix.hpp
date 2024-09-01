@@ -293,11 +293,11 @@ public:
      */
     class const_iterator {
 	
-	public:
-		typedef std::forward_iterator_tag iterator_category;
-		typedef ptrdiff_t                 difference_type;
-		typedef const T*                  pointer;
-		typedef const T&                  reference;
+	    public:
+            typedef std::forward_iterator_tag iterator_category;
+            typedef ptrdiff_t                 difference_type;
+            typedef const T*                  pointer;
+            typedef const T&                  reference;
 
         /**
          * @brief Construct a new const iterator object
