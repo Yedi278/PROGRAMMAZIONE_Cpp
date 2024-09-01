@@ -4,60 +4,92 @@
 #include "SparseMatrix.hpp"
 
 void test_SparseMatrix(){
-    SparseMatrix<int> mat(10,10, -1);
 
-    mat.printInfo();
+    try{
+        //creazione matrice 10x10 con valore di default -1
+        SparseMatrix<int> mat(10,10, -1);
 
-    mat.set(25,5,4);
-    mat.set(12,2,4);
-    mat.set(10,2,4);
-    mat.set(6,9,5);
+        mat.printInfo();
 
-    mat.set(-1, 6,2);
+        //set valore normale
+        mat.set(25,5,4);
+        mat.set(6,9,5);
 
-    mat.printData();
+        //cambio valore
+        mat.set(12,2,4);
+        mat.set(10,2,4);
+        
+        //set valore di default
+        mat.set(-1, 6,2);
 
-    LOG("Fine Primo Test");
+        //rimozione valore
+        mat.set(-1,5,4);
+
+        mat.printData();
+
+        LOG("Fine Primo Test");
+
+    }catch(...){
+
+        std::cerr << "Test SparseMatrix fallito" << std::endl;
+    }
 }
 
 void test_copyConstructor(){
-    SparseMatrix<int> mat(10,10, -1);
+    
+    try{
+        //creazione matrice 10x10 con valore di default -1
+        SparseMatrix<int> mat(10,10, -1);
 
-    mat.set(25,5,4);
-    mat.set(12,2,4);
-    mat.set(10,2,4);
-    mat.set(6,9,5);
+        mat.set(25,5,4);
+        mat.set(12,2,4);
+        mat.set(10,2,4);
+        mat.set(6,9,5);
 
-    mat.set(-1, 6,2);
+        mat.set(-1, 6,2);
 
-    mat.printData();
+        mat.printData();
 
-    SparseMatrix<int> mat2(mat);
+        //copia matrice
+        SparseMatrix<int> mat2(mat);
 
-    mat2.printData();
+        mat2.printData();
 
-    LOG("Fine Copyconstructor Test");
+        LOG("Fine Copyconstructor Test");
+    
+    }catch (...){
+        std::cerr << "Test CopyConstructor fallito" << std::endl;
+    }
 }
 
 void test_iterator(){
-    SparseMatrix<int> mat(10,10, -1);
 
-    mat.set(25,5,4);
-    mat.set(12,2,4);
-    mat.set(10,2,4);
-    mat.set(6,9,5);
+    try{
+        //creazione matrice 10x10 con valore di default -1
+        SparseMatrix<int> mat(10,10, -1);
 
-    mat.set(-1, 6,2);
+        mat.set(25,5,4);
+        mat.set(12,2,4);
+        mat.set(10,2,4);
+        mat.set(6,9,5);
 
-    mat.printData();
+        mat.set(-1, 6,2);
 
-    for(SparseMatrix<int>::const_iterator i = mat.begin(); i != mat.end(); i++){
-        std::cout << (*i)._value << ", ";
+        mat.printData();
+
+        //test iteratori
+        for(SparseMatrix<int>::const_iterator i = mat.begin(); i != mat.end(); i++){
+            std::cout << (*i)._value << ", ";
+        }
+
+        std::cout << std::endl;
+
+        LOG("Fine Iterator Test");
+
+    }catch(...){
+
+        std::cerr << "Test Iterator fallito" << std::endl;
     }
-
-    std::cout << std::endl;
-
-    LOG("Fine Iterator Test");
 }
 
 struct P_even{
@@ -67,9 +99,18 @@ struct P_even{
     }
 };
 
+struct P_size{
+    bool operator()(const int& value){
+        if(value >= 10) return true;
+        return false;
+    }
+};
+
 void test_evaluate_int(){
 
-    LOG("Evaluate con D=-1");
+    try{
+
+    LOG("Evaluate con D=-1 - even");
     SparseMatrix<int> mat(10,10, -1);
 
     mat.set(25,5,4);
@@ -81,9 +122,9 @@ void test_evaluate_int(){
 
     mat.printData();
 
-    std::cout << "counter : " << evaluate<int,P_even>(mat) << std::endl;
+    std::cout << "counter valori pari: " << evaluate<int,P_even>(mat) << std::endl;
 
-    LOG("Evaluate con D=0");
+    LOG("Evaluate con D=0 - even");
 
     SparseMatrix<int> mat2(10,10, 0);
 
@@ -94,10 +135,25 @@ void test_evaluate_int(){
 
     mat2.printData();
 
-    std::cout << "counter : " << evaluate<int,P_even>(mat2) << std::endl;
+    std::cout << "counter valori pari: " << evaluate<int,P_even>(mat2) << std::endl;
+
+    LOG("Evaluate con D=0 - size");
+
+    SparseMatrix<int> mat3(10,10, 0);
+
+    mat3.set(25,5,4);
+    mat3.set(12,2,4);
+    mat3.set(10,2,4);
+    mat3.set(6,9,5);
+
+    mat3.printData();
+
+    std::cout << "counter valori maggiori e uguali a 10 : " << evaluate<int,P_size>(mat3) << std::endl;
 
     LOG("Fine Evaluate Test");
+    }catch(...){
+        std::cerr << "Test Evaluate fallito" << std::endl;
+    }
 }
-
 
 #endif

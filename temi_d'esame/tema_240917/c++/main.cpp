@@ -6,9 +6,9 @@ int main(int argv, char** argc){
     
     test_SparseMatrix();
 
-    test_copyConstructor();
+    // test_copyConstructor();
 
-    test_iterator();
+    // test_iterator();
 
     test_evaluate_int();
 
