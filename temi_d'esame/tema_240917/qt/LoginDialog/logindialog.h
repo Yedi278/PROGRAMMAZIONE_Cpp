@@ -87,10 +87,22 @@ class LoginDialog : public QMainWindow
 
 public:
     /**
-     * @brief LoginDialog costructor
+     * @brief LoginDialog constructor
      * @param parent
      */
     LoginDialog(QWidget *parent = nullptr);
+
+    /**
+     * @brief LoginDialog destructor
+     */
+    ~LoginDialog();
+
+private:
+
+    ///@brief lista degli utenti iscritti
+    std::vector<login_info> credentials;
+
+    Ui::LoginDialog *ui;
 
     /**
      * @brief cleanUI ripristina la finestra allo stato iniziale
@@ -98,9 +110,11 @@ public:
     void cleanUI();
 
     /**
-     * @brief LoginDialog destructor
+     * @brief is_valid_email controlla la correttezza della stringa mail o numero tel.
+     * @param email o numero telef.
+     * @return bool ritorna la validità dell'entrata.
      */
-    ~LoginDialog();
+    bool is_valid_email(std::string email);
 
 private slots:
     /**
@@ -118,11 +132,6 @@ private slots:
      */
     void on_recupero_password_clicked();
 
-private:
-    Ui::LoginDialog *ui;
-
-    ///@brief lista degli utenti iscritti
-    std::vector<login_info> credentials;
 
 //admin window variables
 private:

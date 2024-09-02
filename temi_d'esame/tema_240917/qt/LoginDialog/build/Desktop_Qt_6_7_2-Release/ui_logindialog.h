@@ -107,7 +107,7 @@ public:
         frame->setFrameShadow(QFrame::Raised);
         verticalLayoutWidget_4 = new QWidget(frame);
         verticalLayoutWidget_4->setObjectName("verticalLayoutWidget_4");
-        verticalLayoutWidget_4->setGeometry(QRect(0, 0, 621, 86));
+        verticalLayoutWidget_4->setGeometry(QRect(0, 0, 621, 90));
         verticalLayout_4 = new QVBoxLayout(verticalLayoutWidget_4);
         verticalLayout_4->setObjectName("verticalLayout_4");
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
@@ -239,6 +239,7 @@ public:
         iscrizione_anno = new QDateEdit(centralwidget);
         iscrizione_anno->setObjectName("iscrizione_anno");
         iscrizione_anno->setMaximumDate(QDate(2024, 12, 31));
+        iscrizione_anno->setMinimumDate(QDate(1752, 9, 15));
 
         horizontalLayout_6->addWidget(iscrizione_anno);
 
@@ -266,7 +267,7 @@ public:
         LoginDialog->setCentralWidget(centralwidget);
         menubar = new QMenuBar(LoginDialog);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 649, 21));
+        menubar->setGeometry(QRect(0, 0, 649, 23));
         LoginDialog->setMenuBar(menubar);
         statusbar = new QStatusBar(LoginDialog);
         statusbar->setObjectName("statusbar");

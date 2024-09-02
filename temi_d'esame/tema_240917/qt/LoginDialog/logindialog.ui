@@ -162,7 +162,7 @@
          <x>0</x>
          <y>0</y>
          <width>621</width>
-         <height>86</height>
+         <height>90</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -388,6 +388,13 @@
             <day>31</day>
            </date>
           </property>
+          <property name="minimumDate">
+           <date>
+            <year>1752</year>
+            <month>9</month>
+            <day>15</day>
+           </date>
+          </property>
           <property name="displayFormat">
            <string>yyyy</string>
           </property>
@@ -426,7 +433,7 @@
      <x>0</x>
      <y>0</y>
      <width>649</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>

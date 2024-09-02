@@ -9,12 +9,12 @@ LoginDialog::LoginDialog(QWidget *parent)
     ui->setupUi(this);
 
     //aggiunta dell'admin
-    login_info admin("admin", " ", "admin@pas.com", "admin", 1, 1, 1, 0, 0);
+    login_info admin("admin_name", "admin_surname", "admin@pas.com", "admin", 1, 1, 1, 0, 0);
     credentials.push_back(admin);
 
-    credentials.push_back(login_info("test","test", "m1", "pass", 27, 8, 2001, 1, 23));
-    credentials.push_back(login_info("test","test", "m2", "pass", 27, 8, 2001, 1, 25));
-    credentials.push_back(login_info("test","test", "m3", "pass", 27, 8, 2001, 1, 27));
+    credentials.push_back(login_info("gino","rossi", "m1", "pass", 27, 8, 2001, 1, 23));
+    credentials.push_back(login_info("mario","alberti", "m2", "pass", 27, 8, 2001, 1, 25));
+    credentials.push_back(login_info("giulio","ferreri", "m3", "pass", 27, 8, 2001, 1, 27));
     credentials.push_back(login_info("test","test", "m4", "pass", 27, 8, 2001, 0, 32));
     credentials.push_back(login_info("test","test", "m5", "pass", 27, 8, 2001, 0, 56));
     credentials.push_back(login_info("test","test", "m6", "pass", 27, 8, 2001, 0, 44));
@@ -66,14 +66,50 @@ void LoginDialog::cleanUI(){
     ui->login_password->setText(QString(""));
 }
 
+bool LoginDialog::is_valid_email(std::string email){
+    QMessageBox message;
+    bool has_at_symbol = false;
+
+    if(email.find('@') != std::string::npos){
+        has_at_symbol = true;
+    }
+    if(email.find(' ') != std::string::npos){
+        message.critical(0, "Errore", "Non sono consentiti spazi!");
+        return false;
+    }
+
+    // se non ha il carattere @ -> supongo sia un numero telefonico
+    if(!has_at_symbol){
+        for(char i : email){
+            if(!std::isdigit(i)){
+                message.critical(0, "Errore", "numero telfonico non valido! Sono permessi solo numeri! \nAltrimenti inseririe una mail valida.");
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 void LoginDialog::on_login_accedi_clicked()
 {
     QMessageBox message;
 
-    for(auto i : credentials){
+    std::string mail = ui->login_email->text().toStdString();
+    if(!is_valid_email(mail)){
+        return;
+    }
 
-        std::string mail = ui->login_email->text().toStdString();
-        std::string password = ui->login_password->text().toStdString();
+    std::string password = ui->login_password->text().toStdString();
+    if(password.find(' ') != std::string::npos){
+        message.critical(0,"Errore", "Non sono permessi spazi nella password!");
+        return;
+    }
+    if(password.length() < 1){
+        message.critical(0, "Errore", "Inserire una password!");
+        return;
+    }
+
+    for(auto i : credentials){
 
         if( i._email_or_tel == mail && i._password == password ){
 
@@ -87,7 +123,6 @@ void LoginDialog::on_login_accedi_clicked()
                 updateAdminUIList(); //aggionamento lista
                 updateAdminUIPie(); //aggionramento grafici
                 admin_window->show(); //visualizzazione grafici
-
             }
             return;
         }
@@ -97,8 +132,8 @@ void LoginDialog::on_login_accedi_clicked()
     cleanUI();
 }
 
-void LoginDialog::on_iscrizione_bottone_clicked()
-{
+void LoginDialog::on_iscrizione_bottone_clicked(){
+
     QMessageBox messageBox;
 
     std::string nome = ui->iscrizione_nome->text().toStdString();
@@ -150,24 +185,20 @@ void LoginDialog::on_iscrizione_bottone_clicked()
         return;
     }
 
-    //controllo nome
-    if(nome.length()==0){
-        messageBox.critical(0,"Errore", "Inserire un Nome!");
-        return;
+    for(auto i : {nome,cognome,email,password}){
+        //controllo la presenza di testo
+        if(i.length() <= 0){
+            messageBox.critical(0, "Errore", "Compilare tutti i campi!");
+            return;
+        }
+        //controllo presenza di spazi
+        if(i.find(' ') != std::string::npos){
+            messageBox.critical(0, "Errore", "Non sono ammessi spazi!");
+            return;
+        }
     }
-    //controllo cognome
-    if(cognome.length()==0){
-        messageBox.critical(0,"Errore", "Inserire un Cognome!");
-        return;
-    }
-    //controllo mail
-    if(email.length()==0){
-        messageBox.critical(0,"Errore", "Inserire una E-mail o un Numero di telefono!");
-        return;
-    }
-    //controllo password
-    if(password.length()==0){
-        messageBox.critical(0,"Errore", "Inserire una Password!");
+    //controllo validità mail/ n.tel inseriti
+    if(is_valid_email(email) == false){
         return;
     }
 
@@ -205,6 +236,25 @@ void LoginDialog::adminUIConstruct(){
         serie_età = new QPieSeries(nullptr);
 
     }catch(...){
+
+        delete lay;
+        delete table;
+
+        chart_genere->removeSeries(serie_genere);
+        chart_età->removeSeries(serie_età);
+
+        delete chart_età;
+        delete chart_genere;
+
+
+        delete chart_età_v ;
+        delete chart_genere_v;
+
+        delete serie_genere;
+        delete serie_età;
+
+        delete admin_window;
+
         admin_window = nullptr;
         lay = nullptr;
         table = nullptr;
@@ -239,7 +289,6 @@ void LoginDialog::adminUIConstruct(){
 
 void LoginDialog::updateAdminUIList(){
     table->clear();
-    table->addItem(QString("Nome, Cognome, mail/tel, password, età"));
     for(auto i : credentials){
         table->addItem(QString::fromStdString(i._nome + ", " + i._cognome + ", " + i._email_or_tel + ", " + i._password + ", " + std::to_string(i._età)));
     }
@@ -254,6 +303,7 @@ void LoginDialog::updateAdminUIPie(){
     qsizetype e_18_26=0, e_27_35=0, e_36_44=0, e_45_53=0, e_54_p=0;
 
     for(auto i : credentials){
+
         if(i._genere == 0){
             m++;
         }else{
