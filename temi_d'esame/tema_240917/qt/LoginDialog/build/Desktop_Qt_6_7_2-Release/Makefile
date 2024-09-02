@@ -255,6 +255,7 @@ DIST          = /home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/qt_config.prf \
 		/home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/spec_post.prf \
+		../../.qmake.stash \
 		/home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/toolchain.prf \
 		/home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -487,6 +488,7 @@ Makefile: ../../LoginDialog.pro /home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/linux-g++/
 		/home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/qt_config.prf \
 		/home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/toolchain.prf \
 		/home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -714,6 +716,7 @@ Makefile: ../../LoginDialog.pro /home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/linux-g++/
 /home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/qt_config.prf:
 /home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/linux-g++/qmake.conf:
 /home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/exclusive_builds.prf:
 /home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/toolchain.prf:
 /home/mrrobot/Qt/6.7.2/gcc_64/mkspecs/features/default_pre.prf:
@@ -2778,7 +2781,19 @@ logindialog.o: ../../logindialog.cpp ../../logindialog.h \
 		/home/mrrobot/Qt/6.7.2/gcc_64/include/QtCharts/qvpiemodelmapper.h \
 		/home/mrrobot/Qt/6.7.2/gcc_64/include/QtCharts/qvxymodelmapper.h \
 		/home/mrrobot/Qt/6.7.2/gcc_64/include/QtCharts/qxylegendmarker.h \
-		ui_logindialog.h
+		ui_logindialog.h \
+		/home/mrrobot/Qt/6.7.2/gcc_64/include/QtCore/QDate \
+		/home/mrrobot/Qt/6.7.2/gcc_64/include/QtWidgets/QApplication \
+		/home/mrrobot/Qt/6.7.2/gcc_64/include/QtWidgets/QDateEdit \
+		/home/mrrobot/Qt/6.7.2/gcc_64/include/QtWidgets/QFrame \
+		/home/mrrobot/Qt/6.7.2/gcc_64/include/QtWidgets/QLabel \
+		/home/mrrobot/Qt/6.7.2/gcc_64/include/QtWidgets/QLineEdit \
+		/home/mrrobot/Qt/6.7.2/gcc_64/include/QtWidgets/QMenuBar \
+		/home/mrrobot/Qt/6.7.2/gcc_64/include/QtWidgets/QPushButton \
+		/home/mrrobot/Qt/6.7.2/gcc_64/include/QtWidgets/QRadioButton \
+		/home/mrrobot/Qt/6.7.2/gcc_64/include/QtWidgets/QSpacerItem \
+		/home/mrrobot/Qt/6.7.2/gcc_64/include/QtWidgets/QStatusBar \
+		/home/mrrobot/Qt/6.7.2/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o logindialog.o ../../logindialog.cpp
 
 moc_logindialog.o: moc_logindialog.cpp 

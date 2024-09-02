@@ -33,8 +33,7 @@ class Ui_LoginDialog
 public:
     QWidget *centralwidget;
     QVBoxLayout *verticalLayout_6;
-    QFrame *frame;
-    QWidget *verticalLayoutWidget_4;
+    QFrame *verticalFrame_4;
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_3;
@@ -73,14 +72,13 @@ public:
     {
         if (LoginDialog->objectName().isEmpty())
             LoginDialog->setObjectName("LoginDialog");
-        LoginDialog->resize(649, 314);
+        LoginDialog->resize(649, 383);
         centralwidget = new QWidget(LoginDialog);
         centralwidget->setObjectName("centralwidget");
         verticalLayout_6 = new QVBoxLayout(centralwidget);
         verticalLayout_6->setObjectName("verticalLayout_6");
-        frame = new QFrame(centralwidget);
-        frame->setObjectName("frame");
-        frame->setEnabled(true);
+        verticalFrame_4 = new QFrame(centralwidget);
+        verticalFrame_4->setObjectName("verticalFrame_4");
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -101,30 +99,26 @@ public:
         palette.setBrush(QPalette::Disabled, QPalette::Button, brush1);
         palette.setBrush(QPalette::Disabled, QPalette::Base, brush2);
         palette.setBrush(QPalette::Disabled, QPalette::Window, brush2);
-        frame->setPalette(palette);
-        frame->setAutoFillBackground(true);
-        frame->setFrameShape(QFrame::StyledPanel);
-        frame->setFrameShadow(QFrame::Raised);
-        verticalLayoutWidget_4 = new QWidget(frame);
-        verticalLayoutWidget_4->setObjectName("verticalLayoutWidget_4");
-        verticalLayoutWidget_4->setGeometry(QRect(0, 0, 621, 90));
-        verticalLayout_4 = new QVBoxLayout(verticalLayoutWidget_4);
+        verticalFrame_4->setPalette(palette);
+        verticalFrame_4->setAutoFillBackground(true);
+        verticalLayout_4 = new QVBoxLayout(verticalFrame_4);
         verticalLayout_4->setObjectName("verticalLayout_4");
-        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
+        horizontalLayout->setSizeConstraint(QLayout::SetMinAndMaxSize);
         horizontalSpacer_3 = new QSpacerItem(19, 20, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_3);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName("verticalLayout");
-        Email_o_telefono = new QLabel(verticalLayoutWidget_4);
+        verticalLayout->setSizeConstraint(QLayout::SetMinimumSize);
+        Email_o_telefono = new QLabel(verticalFrame_4);
         Email_o_telefono->setObjectName("Email_o_telefono");
 
         verticalLayout->addWidget(Email_o_telefono);
 
-        login_email = new QLineEdit(verticalLayoutWidget_4);
+        login_email = new QLineEdit(verticalFrame_4);
         login_email->setObjectName("login_email");
 
         verticalLayout->addWidget(login_email);
@@ -138,12 +132,13 @@ public:
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName("verticalLayout_2");
-        label_2 = new QLabel(verticalLayoutWidget_4);
+        verticalLayout_2->setSizeConstraint(QLayout::SetMinimumSize);
+        label_2 = new QLabel(verticalFrame_4);
         label_2->setObjectName("label_2");
 
         verticalLayout_2->addWidget(label_2);
 
-        login_password = new QLineEdit(verticalLayoutWidget_4);
+        login_password = new QLineEdit(verticalFrame_4);
         login_password->setObjectName("login_password");
 
         verticalLayout_2->addWidget(login_password);
@@ -157,12 +152,12 @@ public:
 
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName("verticalLayout_3");
-        label_3 = new QLabel(verticalLayoutWidget_4);
+        label_3 = new QLabel(verticalFrame_4);
         label_3->setObjectName("label_3");
 
         verticalLayout_3->addWidget(label_3);
 
-        login_accedi = new QPushButton(verticalLayoutWidget_4);
+        login_accedi = new QPushButton(verticalFrame_4);
         login_accedi->setObjectName("login_accedi");
 
         verticalLayout_3->addWidget(login_accedi);
@@ -175,12 +170,18 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName("horizontalLayout_3");
+        horizontalLayout_3->setSizeConstraint(QLayout::SetMinimumSize);
         horizontalSpacer_4 = new QSpacerItem(19, 15, QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Minimum);
 
         horizontalLayout_3->addItem(horizontalSpacer_4);
 
-        recupero_password = new QPushButton(verticalLayoutWidget_4);
+        recupero_password = new QPushButton(verticalFrame_4);
         recupero_password->setObjectName("recupero_password");
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(recupero_password->sizePolicy().hasHeightForWidth());
+        recupero_password->setSizePolicy(sizePolicy);
         recupero_password->setFlat(true);
 
         horizontalLayout_3->addWidget(recupero_password);
@@ -193,7 +194,7 @@ public:
         verticalLayout_4->addLayout(horizontalLayout_3);
 
 
-        verticalLayout_6->addWidget(frame);
+        verticalLayout_6->addWidget(verticalFrame_4);
 
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName("verticalLayout_5");
