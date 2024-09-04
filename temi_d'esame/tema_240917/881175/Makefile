@@ -1,11 +1,11 @@
 CXX = g++
 
 CXXFLAGS_debug = -Wall -g -std=c++11
-CXXFLAGS_release = -O2 -s -DNDEBUG -std=c++11
+CXXFLAGS_release = -O2 -s -DNDEBUG -std=c++11 
 
 #select one of the following:
 CXXFLAGS = $(CXXFLAGS_debug)	#with debug info
-# CXXFLAGS = $(CXXFLAGS_release)	#witout debug info
+# CXXFLAGS = $(CXXFLAGS_release)	#witout debug info and optimised
 
 default: main
 

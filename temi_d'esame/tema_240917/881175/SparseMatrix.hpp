@@ -4,8 +4,14 @@
 /// @brief macro for debug mode (print logs)
 #ifndef NDEBUG
 #define LOG(X) std::cout << X << std::endl
+#define LOGRED(X) std::cout << "\033[1;31m" << X << "\033[0m" << std::endl
+#define LOGGREEN(X) std::cout << "\033[1;32m" << X << "\033[0m" << std::endl
+#define LOGBLUE(X) std::cout << "\033[1;34m" << X << "\033[0m" << std::endl
 #else
-#define LOG(X) 
+#define LOG(X)
+#define LOGRED(X)
+#define LOGGREEN(X)
+#define LOGBLUE(X)
 #endif
 
 #include <iostream>
@@ -463,7 +469,7 @@ typename SparseMatrix<T>::size_type evaluate(const SparseMatrix<T>& mat){
         m = mat.get_col();
         for(typename SparseMatrix<T>::size_type i=0; i<n; i++){
             for(typename SparseMatrix<T>::size_type j=0; j<m; j++){
-                if( pred(mat(i,j))){
+                if( pred(mat(i,j) )){
                     counter++;
                 }
             }
