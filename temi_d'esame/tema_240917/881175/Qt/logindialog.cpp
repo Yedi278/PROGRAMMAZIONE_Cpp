@@ -125,7 +125,7 @@ void LoginDialog::on_login_accedi_clicked()
                 cleanUI();  //ripristino scermata a condizioni iniziali
                 updateAdminUIList(); //aggionamento lista
                 updateAdminUIPie(); //aggionramento grafici
-                admin_window->show(); //visualizzazione grafici
+                admin_window->showMaximized();  //visualizzazione grafici
             }
             return;
         }
