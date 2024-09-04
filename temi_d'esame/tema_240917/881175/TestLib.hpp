@@ -213,4 +213,20 @@ void test_evaluate_int(){
     }
 }
 
+void test_get_funcs(){
+    
+    try{
+        SparseMatrix<int> mat(10,6, -1);
+
+        assert(mat.get_row() == 10);
+        assert(mat.get_col() == 6);
+        assert(mat.get_D() == -1);
+
+        LOGGREEN("Fine Test Get Funcs");
+
+    }catch(...){
+        LOGRED("Test Get Funcs fallito");
+    }
+}
+
 #endif
